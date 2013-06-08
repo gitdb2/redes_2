@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClientDevicesAdminGUI.Properties {
+namespace ort.edu.uy.obligatorio2.ClientDevicesGUI.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ClientDevicesAdminGUI.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ClientDevicesAdminGUI.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ort.edu.uy.obligatorio2.ClientDevicesGUI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

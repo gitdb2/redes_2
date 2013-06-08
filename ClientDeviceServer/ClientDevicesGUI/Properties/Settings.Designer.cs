@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClientDevicesAdminGUI.Properties {
+namespace ort.edu.uy.obligatorio2.ClientDevicesGUI.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
