@@ -40,5 +40,24 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
             this.IsTurnedOn = false;
         }
 
+        public int GetTimerInterval()
+        {
+            return int.Parse(Settings.GetInstance().GetProperty("statusreport.interval", "5000"));
+        }
+
+        public void SendStatusReport(TimeSpan delta)
+        {
+            SendMessage(Command.REQ, OpCodeConstants.REQ_SEND_STATUS_REPORT, payload);
+        }
+
+        private void SendMessage(Command command, int opCode, Payload payload)
+        {
+            Data data = new Data() { Command = command, OpCode = opCode, Payload = payload };
+            foreach (var item in data.GetBytes())
+            {
+                connection.WriteToStream(item);
+            }
+        }
+
     }
 }

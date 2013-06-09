@@ -13,11 +13,14 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
     public partial class Device : Form
     {
         private MonitoringDeviceHandler deviceHandler;
+        private int timerInterval;
+        private DateTime startTime = DateTime.Now;
 
         public Device()
         {
             InitializeComponent();
             deviceHandler = new MonitoringDeviceHandler();
+            this.timerInterval = deviceHandler.GetTimerInterval();
             ChangeStatusLabels();
         }
 
@@ -55,6 +58,17 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
         private bool TextBoxIsEmpty(TextBox txtBox)
         {
             return txtBox.Text == null || txtBox.Text.Trim().Equals("");
+        }
+
+        private void timerSendStatus_Tick(object sender, EventArgs e)
+        {
+            var delta = DateTime.Now - startTime;
+            AppendToLog(this.deviceHandler.SendStatusReport(delta));
+        }
+
+        private void AppendToLog(string message)
+        {
+            this.listBoxMessageLog.Items.Add(message);
         }
 
     }

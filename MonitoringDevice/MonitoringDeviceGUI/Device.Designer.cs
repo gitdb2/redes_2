@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblName = new System.Windows.Forms.Label();
             this.txtBoxName = new System.Windows.Forms.TextBox();
             this.btnOnOff = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@
             this.lblFailureType = new System.Windows.Forms.Label();
             this.lblFailureAlert = new System.Windows.Forms.Label();
             this.lblLog = new System.Windows.Forms.Label();
+            this.timerSendStatus = new System.Windows.Forms.Timer(this.components);
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +83,7 @@
             this.toolStripStatusLabelStatusOnOff});
             this.statusStrip.Location = new System.Drawing.Point(0, 457);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(298, 22);
+            this.statusStrip.Size = new System.Drawing.Size(297, 22);
             this.statusStrip.TabIndex = 3;
             this.statusStrip.Text = "Estado Actual:";
             // 
@@ -94,8 +96,7 @@
             // toolStripStatusLabelStatusOnOff
             // 
             this.toolStripStatusLabelStatusOnOff.Name = "toolStripStatusLabelStatusOnOff";
-            this.toolStripStatusLabelStatusOnOff.Size = new System.Drawing.Size(55, 17);
-            this.toolStripStatusLabelStatusOnOff.Text = "Apagado";
+            this.toolStripStatusLabelStatusOnOff.Size = new System.Drawing.Size(0, 17);
             // 
             // lblStatus
             // 
@@ -189,11 +190,17 @@
             this.lblLog.TabIndex = 14;
             this.lblLog.Text = "Log de Mensajes:";
             // 
+            // timerSendStatus
+            // 
+            this.timerSendStatus.Enabled = true;
+            this.timerSendStatus.Interval = 5000;
+            this.timerSendStatus.Tick += new System.EventHandler(this.timerSendStatus_Tick);
+            // 
             // Device
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(298, 479);
+            this.ClientSize = new System.Drawing.Size(297, 479);
             this.Controls.Add(this.lblLog);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblMessageLog);
@@ -234,6 +241,7 @@
         private System.Windows.Forms.Label lblFailureType;
         private System.Windows.Forms.Button btnSendFailure;
         private System.Windows.Forms.Label lblLog;
+        private System.Windows.Forms.Timer timerSendStatus;
     }
 }
 
