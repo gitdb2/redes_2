@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ort.edu.uy.obligatorio2.MonitoringDevice
+namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
 {
     public partial class Device : Form
     {

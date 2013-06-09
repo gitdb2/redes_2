@@ -8,7 +8,7 @@
     <ProjectGuid>{10CA93E3-5E0E-4047-97D3-77A9C8218A2B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MonitoringDeviceLogic</RootNamespace>
+    <RootNamespace>ort.edu.uy.obligatorio2.MonitoringDeviceLogic</RootNamespace>
     <AssemblyName>MonitoringDeviceLogic</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,8 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandler.cs" />
     <Compile Include="MonitoringDeviceHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiveEventHandler.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Commons\Commons\Commons.csproj">
+      <Project>{A4983E71-5669-45E3-A3C8-C428E056EF62}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Commons\Comunicacion\Comunicacion.csproj">
+      <Project>{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}</Project>
+      <Name>Comunicacion</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

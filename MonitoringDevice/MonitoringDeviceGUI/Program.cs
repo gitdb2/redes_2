@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ort.edu.uy.obligatorio2.MonitoringDevice
+namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
 {
     static class Program
     {
