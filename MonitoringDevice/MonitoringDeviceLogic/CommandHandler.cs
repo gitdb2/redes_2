@@ -35,10 +35,6 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
             bool ret = true;
             switch (dato.OpCode)
             {
-                case 0:
-                    break;
-                case OpCodeConstants.RES_LOGIN:
-                    break;
                 default:
                     break;
             }
@@ -50,12 +46,10 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
             bool ret = true;
             switch (dato.OpCode)
             {
-                case OpCodeConstants.REQ_SEND_CHAT_MSG:
-                    break;
                 default:
                     break;
             }
-             return ret;
+            return ret;
         }
 
     }

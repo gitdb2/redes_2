@@ -127,6 +127,12 @@
             // comboFailureType
             // 
             this.comboFailureType.FormattingEnabled = true;
+            this.comboFailureType.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
             this.comboFailureType.Location = new System.Drawing.Point(107, 19);
             this.comboFailureType.Name = "comboFailureType";
             this.comboFailureType.Size = new System.Drawing.Size(144, 21);
@@ -135,6 +141,12 @@
             // comboFailureAlertLevel
             // 
             this.comboFailureAlertLevel.FormattingEnabled = true;
+            this.comboFailureAlertLevel.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
             this.comboFailureAlertLevel.Location = new System.Drawing.Point(107, 56);
             this.comboFailureAlertLevel.Name = "comboFailureAlertLevel";
             this.comboFailureAlertLevel.Size = new System.Drawing.Size(144, 21);
@@ -162,6 +174,7 @@
             this.btnSendFailure.TabIndex = 13;
             this.btnSendFailure.Text = "Reportar Falla";
             this.btnSendFailure.UseVisualStyleBackColor = true;
+            this.btnSendFailure.Click += new System.EventHandler(this.btnSendFailure_Click);
             // 
             // lblFailureType
             // 
