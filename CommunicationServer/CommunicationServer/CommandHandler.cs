@@ -58,7 +58,7 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
         {
             FaultFrameDecoded message = new FaultFrameDecoded();
             message.Parse(dato.Payload.Message);
-            log.DebugFormat("Llego REQ Failure con {1}", message.ToString());
+            log.DebugFormat("Llego REQ Failure con {0}", message.ToString());
             log.DebugFormat("Notificar a server dispositivos y estadisticas");
         }
 
@@ -66,7 +66,7 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
         {
             StatusFrameDecoded message = new StatusFrameDecoded();
             message.Parse(dato.Payload.Message);
-            log.DebugFormat("Llego REQ STATUS con {1}", message.ToString());
+            log.DebugFormat("Llego REQ STATUS con {0}", message.ToString());
             log.DebugFormat("Notificar a server dispositivos y estadisticas");
         }
     

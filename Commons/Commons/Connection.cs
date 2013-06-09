@@ -112,7 +112,7 @@ namespace uy.edu.ort.obligatorio.Commons
                 {
                     notEnd = EventHandler.OnFatalError(this);
 
-                    Console.WriteLine("Se rompio la conexion de: " + this.Name);
+                    Console.WriteLine("Se cerro la conexion de: " + this.Name);
                     log.Error("Catch excepcion y cerrado de conexion", e);
                     Console.WriteLine("Error: " + e.Message);
                     notEnd = false;
