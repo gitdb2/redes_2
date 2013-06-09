@@ -15,7 +15,6 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
     public partial class Device : Form
     {
         private MonitoringDeviceHandler deviceHandler;
-        private int timerInterval;
         private Stopwatch stopwatch;
 
         public Device()
@@ -23,9 +22,9 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
             InitializeComponent();
             statusButton.Tag = true;
             deviceHandler = new MonitoringDeviceHandler();
-            this.timerInterval = deviceHandler.GetTimerInterval();
             this.stopwatch = new Stopwatch();
             ChangeStatusLabels();
+            timerSendStatus.Interval = deviceHandler.GetTimerInterval();
            
         }
 
