@@ -227,6 +227,7 @@
             this.MaximizeBox = false;
             this.Name = "Device";
             this.Text = "Dispositivo de Monitoreo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Device_FormClosing);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.groupBox1.ResumeLayout(false);

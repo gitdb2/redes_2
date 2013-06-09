@@ -120,5 +120,10 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
             this.listBoxMessageLog.Items.Add(message);
         }
 
+        private void Device_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.deviceHandler.TurnOff();
+        }
+
     }
 }
