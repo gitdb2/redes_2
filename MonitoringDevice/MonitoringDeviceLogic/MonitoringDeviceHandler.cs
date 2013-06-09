@@ -45,9 +45,14 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
             return int.Parse(Settings.GetInstance().GetProperty("statusreport.interval", "5000"));
         }
 
-        public void SendStatusReport(TimeSpan delta)
+        public void SendStatusReport(long uptimeMillis)
         {
-            SendMessage(Command.REQ, OpCodeConstants.REQ_SEND_STATUS_REPORT, payload);
+            //iddisp|tipo de falla numero|tipo de alerta numero|fecha hora en formato
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this.DeviceName).Append(ParseConstants.SEPARATOR_PIPE);
+            sb.Append(this.IsTurnedOn ? "1" : "0").Append(ParseConstants.SEPARATOR_PIPE);
+            sb.Append(uptimeMillis);
+            SendMessage(Command.REQ, OpCodeConstants.REQ_SEND_STATUS_REPORT, new Payload(sb.ToString()));
         }
 
         private void SendMessage(Command command, int opCode, Payload payload)

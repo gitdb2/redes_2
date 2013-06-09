@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ort.edu.uy.obligatorio2.MonitoringDeviceLogic;
+using System.Diagnostics;
 
 namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
 {
@@ -14,13 +15,14 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
     {
         private MonitoringDeviceHandler deviceHandler;
         private int timerInterval;
-        private DateTime startTime = DateTime.Now;
+        private Stopwatch stopwatch;
 
         public Device()
         {
             InitializeComponent();
             deviceHandler = new MonitoringDeviceHandler();
             this.timerInterval = deviceHandler.GetTimerInterval();
+            this.stopwatch = new Stopwatch();
             ChangeStatusLabels();
         }
 
@@ -29,6 +31,8 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
             if (this.deviceHandler.IsTurnedOn)
             {
                 this.deviceHandler.TurnOff();
+                stopwatch.Stop();
+                stopwatch.Reset();
                 ChangeStatusLabels();
             }
             else
@@ -36,6 +40,8 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
                 if (!TextBoxIsEmpty(this.txtBoxName))
                 {
                     this.deviceHandler.TurnOn(this.txtBoxName.Text.Trim());
+                    stopwatch.Reset();
+                    stopwatch.Start();
                     ChangeStatusLabels();
                 }
             }
@@ -62,13 +68,20 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
 
         private void timerSendStatus_Tick(object sender, EventArgs e)
         {
-            var delta = DateTime.Now - startTime;
-            AppendToLog(this.deviceHandler.SendStatusReport(delta));
+            if (this.deviceHandler.IsTurnedOn)
+            {
+                this.deviceHandler.SendStatusReport(stopwatch.ElapsedMilliseconds);
+            }
         }
 
         private void AppendToLog(string message)
         {
             this.listBoxMessageLog.Items.Add(message);
+        }
+
+        private void btnSendFailure_Click(object sender, EventArgs e)
+        {
+
         }
 
     }
