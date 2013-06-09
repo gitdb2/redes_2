@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lblName = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxName = new System.Windows.Forms.TextBox();
             this.btnOnOff = new System.Windows.Forms.Button();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelName = new System.Windows.Forms.ToolStripStatusLabel();
@@ -46,27 +46,28 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(10, 16);
+            this.lblName.Location = new System.Drawing.Point(47, 16);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(47, 13);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Nombre:";
             // 
-            // textBox1
+            // txtBoxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(56, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 1;
+            this.txtBoxName.Location = new System.Drawing.Point(100, 13);
+            this.txtBoxName.Name = "txtBoxName";
+            this.txtBoxName.Size = new System.Drawing.Size(180, 20);
+            this.txtBoxName.TabIndex = 1;
             // 
             // btnOnOff
             // 
-            this.btnOnOff.Location = new System.Drawing.Point(56, 52);
+            this.btnOnOff.Location = new System.Drawing.Point(100, 52);
             this.btnOnOff.Name = "btnOnOff";
-            this.btnOnOff.Size = new System.Drawing.Size(121, 23);
+            this.btnOnOff.Size = new System.Drawing.Size(180, 23);
             this.btnOnOff.TabIndex = 2;
             this.btnOnOff.Text = "Encender";
             this.btnOnOff.UseVisualStyleBackColor = true;
+            this.btnOnOff.Click += new System.EventHandler(this.btnOnOff_Click);
             // 
             // statusStrip
             // 
@@ -96,9 +97,9 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Location = new System.Drawing.Point(10, 57);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(43, 13);
+            this.lblStatus.Size = new System.Drawing.Size(84, 13);
             this.lblStatus.TabIndex = 4;
-            this.lblStatus.Text = "Estado:";
+            this.lblStatus.Text = "Cambiar Estado:";
             // 
             // lblFailures
             // 
@@ -156,7 +157,7 @@
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.btnOnOff);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxName);
             this.Controls.Add(this.lblName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -172,7 +173,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBoxName;
         private System.Windows.Forms.Button btnOnOff;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelName;
