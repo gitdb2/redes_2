@@ -15,7 +15,7 @@ namespace uy.edu.ort.obligatorio.Commons
 
         private TcpClient tcpClient;
         private NetworkStream networkStream;
-
+        public const string UNKNOWN = "Unknown";
         public StreamReader StreamReader { get; set; }
         public StreamWriter StreamWriter { get; set; }
 
@@ -48,7 +48,7 @@ namespace uy.edu.ort.obligatorio.Commons
         public delegate void ConnectionDroppedDelegate(String idName);
 
         public Connection(TcpClient c, IReceiveEvent ire)
-            : this("Unknown", c, ire, null)
+            : this(UNKNOWN, c, ire, null)
         {
         }
         public Connection(string name, TcpClient c, IReceiveEvent ire)

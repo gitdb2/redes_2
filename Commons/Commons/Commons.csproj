@@ -45,9 +45,11 @@
   <ItemGroup>
     <Compile Include="Connection.cs" />
     <Compile Include="DataProccessor.cs" />
+    <Compile Include="frameDecoder\FaultFrameDecoded.cs" />
+    <Compile Include="frameDecoder\DeveicePayloadFrameDecoded.cs" />
+    <Compile Include="frameDecoder\StatusFrameDecoded.cs" />
     <Compile Include="IReceiveEvent.cs" />
     <Compile Include="MessageConstants.cs" />
-    <Compile Include="MultiplePayloadFrameDecoded.cs" />
     <Compile Include="OpCodeConstants.cs" />
     <Compile Include="ParseConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

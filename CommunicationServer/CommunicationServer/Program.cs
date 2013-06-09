@@ -31,7 +31,7 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
         public Program()
         {
             log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
-            log4net.GlobalContext.Properties["serverName"] = "DNS";
+            log4net.GlobalContext.Properties["serverName"] = "Communication Server";
             log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         
@@ -39,9 +39,8 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             IPAddress ip = "ANY".Equals(listenAddressStr) ? IPAddress.Any : IPAddress.Parse(listenAddressStr);
             int port =  int.Parse(Settings.GetInstance().GetProperty("listen.port","2000"));
 
-            Console.Title = "Servidor DNS y CHAT";
-            Console.WriteLine("----- DNS y CHAT Server -----");
-            UsersPersistenceHandler.GetInstance().LoadUsers();
+            Console.Title = "Communication Server";
+            Console.WriteLine("----- Communication Server -----");
             Console.WriteLine("[{0}] Starting server...", DateTime.Now);
 
             server = new TcpListener(ip, port);
