@@ -47,12 +47,21 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
 
         public void SendStatusReport(long uptimeMillis)
         {
-            //iddisp|tipo de falla numero|tipo de alerta numero|fecha hora en formato
             StringBuilder sb = new StringBuilder();
             sb.Append(this.DeviceName).Append(ParseConstants.SEPARATOR_PIPE);
             sb.Append(this.IsTurnedOn ? "1" : "0").Append(ParseConstants.SEPARATOR_PIPE);
             sb.Append(uptimeMillis);
             SendMessage(Command.REQ, OpCodeConstants.REQ_SEND_STATUS_REPORT, new Payload(sb.ToString()));
+        }
+
+        public void SendFailureReport(int alertLevel, int failureType, string formattedDate)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(this.DeviceName).Append(ParseConstants.SEPARATOR_PIPE);
+            sb.Append(failureType).Append(ParseConstants.SEPARATOR_PIPE);
+            sb.Append(alertLevel).Append(ParseConstants.SEPARATOR_PIPE);
+            sb.Append(formattedDate);
+            SendMessage(Command.REQ, OpCodeConstants.REQ_SEND_FAILURE_REPORT, new Payload(sb.ToString()));
         }
 
         private void SendMessage(Command command, int opCode, Payload payload)
@@ -63,6 +72,6 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
                 connection.WriteToStream(item);
             }
         }
-
+        
     }
 }
