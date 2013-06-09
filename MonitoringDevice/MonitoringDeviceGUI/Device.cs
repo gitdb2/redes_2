@@ -21,44 +21,65 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
         public Device()
         {
             InitializeComponent();
+            statusButton.Tag = true;
             deviceHandler = new MonitoringDeviceHandler();
             this.timerInterval = deviceHandler.GetTimerInterval();
             this.stopwatch = new Stopwatch();
             ChangeStatusLabels();
+           
         }
 
-        private void btnOnOff_Click(object sender, EventArgs e)
+        private void btnConnectOnclick(object sender, EventArgs e)
         {
-            if (this.deviceHandler.IsTurnedOn)
+            if (this.deviceHandler.IsConnected)
             {
-                this.deviceHandler.TurnOff();
+                this.deviceHandler.Disconnect();
                 stopwatch.Stop();
                 stopwatch.Reset();
                 ChangeStatusLabels();
+                txtBoxName.Enabled = true;
+                txtBoxName.ReadOnly = false;
             }
             else
             {
                 if (!TextBoxIsEmpty(this.txtBoxName))
                 {
-                    this.deviceHandler.TurnOn(this.txtBoxName.Text.Trim());
+                    this.deviceHandler.Connect(this.txtBoxName.Text.Trim());
                     stopwatch.Reset();
                     stopwatch.Start();
                     ChangeStatusLabels();
                 }
+                txtBoxName.Enabled = false;
+                txtBoxName.ReadOnly = true;
+              
             }
+        }
+
+        private string getStatusButtonState()
+        {
+            if (this.deviceHandler.IsTurnedOn)
+            {
+                return "Encendido";
+            }
+            else
+            {
+                return "Apagado";
+            }
+          
         }
 
         private void ChangeStatusLabels()
         {
-            if (this.deviceHandler.IsTurnedOn)
+            statusButton.Text = (this.deviceHandler.IsTurnedOn) ? "Apagar" : "Encender";
+            if (this.deviceHandler.IsConnected)
             {
-                this.toolStripStatusLabelStatusOnOff.Text = "ENCENDIDO";
-                this.btnOnOff.Text = "Apagar";
+                this.toolStripStatusLabelStatusOnOff.Text = "Conectado - " + getStatusButtonState();
+                this.btnOnOff.Text = "Desconectar";
             }
             else
             {
-                this.toolStripStatusLabelStatusOnOff.Text = "APAGADO";
-                this.btnOnOff.Text = "Encender";
+                this.toolStripStatusLabelStatusOnOff.Text = "Desconectado - " + getStatusButtonState();
+                this.btnOnOff.Text = "Conectar";
             }
         }
 
@@ -69,7 +90,7 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
 
         private void timerSendStatus_Tick(object sender, EventArgs e)
         {
-            if (this.deviceHandler.IsTurnedOn)
+            if (this.deviceHandler.IsConnected)
             {
                 long elapsedTime = stopwatch.ElapsedMilliseconds;
                 this.deviceHandler.SendStatusReport(elapsedTime);
@@ -122,7 +143,18 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
 
         private void Device_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.deviceHandler.TurnOff();
+            this.deviceHandler.Disconnect();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            stopwatch.Stop();
+            this.deviceHandler.IsTurnedOn = !this.deviceHandler.IsTurnedOn;
+            
+         //   statusButton.Tag = !(bool)statusButton.Tag;
+            ChangeStatusLabels();
+            stopwatch.Reset();
+            stopwatch.Start();
         }
 
     }

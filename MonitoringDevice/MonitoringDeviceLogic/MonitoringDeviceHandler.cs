@@ -12,6 +12,7 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
     {
         public string DeviceName { get; set; }
         public bool IsTurnedOn { get; set; }
+        public bool IsConnected { get; set; }
 
         private int portCommServer = int.Parse(Settings.GetInstance().GetProperty("commserver.port", "2000"));
         private string ipCommServer = Settings.GetInstance().GetProperty("commserver.ip", "127.0.0.1");
@@ -19,23 +20,24 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
 
         public MonitoringDeviceHandler() 
         {
-            this.IsTurnedOn = false;
-        }
-
-        public void TurnOn(string deviceName)
-        {
-            this.DeviceName = deviceName;
-            connection = new Connection(deviceName, new TcpClient(ipCommServer, portCommServer), new ReceiveEventHandler());
+            IsConnected = false;
             this.IsTurnedOn = true;
         }
 
-        public void TurnOff()
+        public void Connect(string deviceName)
+        {
+            this.DeviceName = deviceName;
+            connection = new Connection(deviceName, new TcpClient(ipCommServer, portCommServer), new ReceiveEventHandler());
+            this.IsConnected = true;
+        }
+
+        public void Disconnect()
         {
             if (this.connection != null)
             {
                 this.connection.CloseConn();
             }
-            this.IsTurnedOn = false;
+            IsConnected = false;
         }
 
         public int GetTimerInterval()
