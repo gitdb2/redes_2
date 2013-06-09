@@ -112,19 +112,20 @@ namespace uy.edu.ort.obligatorio.Commons
                 {
                     notEnd = EventHandler.OnFatalError(this);
 
-                    Console.WriteLine("Se rompio la conexion de: " + this.Name);
+                    Console.WriteLine("Se cerro la conexion de: " + this.Name);
                     log.Error("Catch excepcion y cerrado de conexion", e);
                     Console.WriteLine("Error: " + e.Message);
                     notEnd = false;
                 }
             }
-            try
-            {
-                log.Info("Cerrando la conexion!");
-                CloseConn();
-            }
-            catch { }
-            log.Info("Termian Receive Data!");
+            //try
+            //{
+            //    log.Info("Cerrando la conexion!");
+            //    CloseConn();
+            //}
+            //catch { }
+
+            log.InfoFormat("Termina Receive Data de: {0}!", this.Name);
         }
 
         public void CloseConn() // Close connection.
@@ -136,16 +137,15 @@ namespace uy.edu.ort.obligatorio.Commons
                 StreamWriter.Close();
                 networkStream.Close();
                 tcpClient.Close();
-                Console.WriteLine("[{0}] End of connection!", DateTime.Now);
-                log.Info("End of connection!");
-
+                Console.WriteLine("[{0}] End of connection: {1}!", DateTime.Now, this.Name);
+                log.InfoFormat("End of connection: {0}!", this.Name);
               
             }
             catch (Exception e)
             {
-                log.Error("Error mientras se cerraba la conexion", e);
+                log.Error("Exception mientras se cerraba la conexion (puede ser porque la cerro el cliente)", e);
                 //  Console.WriteLine(e.StackTrace);
-                Console.WriteLine(e.Message);
+             //   Console.WriteLine(e.Message);
 
             }
             finally
@@ -158,7 +158,7 @@ namespace uy.edu.ort.obligatorio.Commons
                     tmp(Name);
                     
                 }
-               
+                log.Debug("End CloseConn!");
             }
             notEnd = false;
         }
