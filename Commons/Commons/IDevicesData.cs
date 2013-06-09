@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
+
+namespace uy.edu.ort.obligatorio.Commons
 {
     public interface IDevicesData
     {
-        string GetDevicesStatus();
+        void SetDeviceStatus(string id, bool status, long upTime);
     }
 }
