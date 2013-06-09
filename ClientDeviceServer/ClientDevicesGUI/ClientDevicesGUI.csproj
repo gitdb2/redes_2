@@ -8,7 +8,7 @@
     <ProjectGuid>{77C4E40F-9EAB-4517-930F-830CEA97D016}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClientDevicesAdminGUI</RootNamespace>
+    <RootNamespace>ort.edu.uy.obligatorio2.ClientDevicesGUI</RootNamespace>
     <AssemblyName>ClientMachineryAdminGUI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
