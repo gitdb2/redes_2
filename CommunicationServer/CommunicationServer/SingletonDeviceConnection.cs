@@ -20,14 +20,14 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             return instance;
         }
 
-        public void AddDevice(string name, Connection connection)
+        public void AddDevice(Connection connection)
         {
             lock (devicesMap)
             {
-                if (!IsConnected(name))//si ya no esta dado de alta
+                if (!IsConnected(connection.Name))//si ya no esta dado de alta
                 {
-                    connection.Name = name;
-                    devicesMap.Add(name, connection);
+                  //  connection.Name = name;
+                    devicesMap.Add(connection.Name, connection);
                 }
             }
         }

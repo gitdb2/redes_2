@@ -6,7 +6,7 @@ using Comunicacion;
 
 namespace uy.edu.ort.obligatorio.Commons.frameDecoder
 {
-    public abstract class DeveicePayloadFrameDecoded
+    public class DeveicePayloadFrameDecoded
     {
         public string DeviceId { get; private set; }
         public string Payload { get; private set; }
@@ -14,7 +14,7 @@ namespace uy.edu.ort.obligatorio.Commons.frameDecoder
      
         public const string DELIMITER = "|";
 
-        //public DeveicePayloadFrameDecoded() { }
+        public DeveicePayloadFrameDecoded() { }
 
         public virtual void Parse(string frame)
         {

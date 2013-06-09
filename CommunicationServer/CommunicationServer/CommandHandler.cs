@@ -5,6 +5,7 @@ using System.Text;
 using Comunicacion;
 using uy.edu.ort.obligatorio.Commons;
 using System.Text.RegularExpressions;
+using uy.edu.ort.obligatorio.Commons.frameDecoder;
 
 namespace uy.edu.ort.obligatorio2.CommunicationServer
 {
@@ -21,18 +22,55 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             return instance;
         }
 
-        public void Handle(Connection clientConnection, Data dato)
+        public void Handle(Connection connection, Data dato)
         {
-            HandleREQ(clientConnection, dato);
-            //if (dato.Command == Command.REQ)
-            //{
-            //    HandleREQ(clientConnection, dato);
-            //}
-            //else
-            //{
-            //    HandleRES(clientConnection, dato);
-            //}
+            if (connection.Name == Connection.UNKNOWN)
+            {
+                DeveicePayloadFrameDecoded tmp = new DeveicePayloadFrameDecoded();
+                tmp.Parse(dato.Payload.Message);
+                connection.Name = tmp.DeviceId;
+            }
+
+            //si no tengo la conexion mapeada, la guardo
+            if (!SingletonDeviceConnection.GetInstance().IsConnected(connection.Name))
+            {
+                SingletonDeviceConnection.GetInstance().AddDevice(connection);
+            }
+
+            Console.WriteLine("[{0}] connection owner: {1} ;  The data: {2} ", DateTime.Now, connection.Name, dato.ToString());
+            switch (dato.OpCode)
+            {
+                case OpCodeConstants.REQ_SEND_STATUS_REPORT: //viene el status de un dispositivo
+                    CommandREQStatusReport(connection, dato);
+                    break;
+                case OpCodeConstants.RES_SEND_FAILURE_REPORT: //viene una Alarma de falla de un dispositivo
+                    CommandREQFailureReport(connection, dato);
+                    break;
+               
+                default:
+                    break;
+            }
         }
+
+
+
+        private void CommandREQFailureReport(Connection clientConnection, Data dato)
+        {
+            FaultFrameDecoded message = new FaultFrameDecoded();
+            message.Parse(dato.Payload.Message);
+            log.DebugFormat("Llego REQ Failure con {1}", message.ToString());
+            log.DebugFormat("Notificar a server dispositivos y estadisticas");
+        }
+
+        private void CommandREQStatusReport(Connection clientConnection, Data dato)
+        {
+            StatusFrameDecoded message = new StatusFrameDecoded();
+            message.Parse(dato.Payload.Message);
+            log.DebugFormat("Llego REQ STATUS con {1}", message.ToString());
+            log.DebugFormat("Notificar a server dispositivos y estadisticas");
+        }
+    
+
 
         //private void HandleRES(Connection connection, Data dato)
         //{
@@ -145,77 +183,39 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
         //    }
         //}
 
-        private void HandleREQ(Connection clientConnection, Data dato)
-        {
-            Console.WriteLine("[{0}] connection owner: {1} ;  The data: {2} ", DateTime.Now, clientConnection.Name, dato.ToString());
-            switch (dato.OpCode)
-            {
-
-                case OpCodeConstants.REQ_LOGIN: //viene el comando login
-                    CommandREQLogin(clientConnection, dato);
-                break;
-                //case OpCodeConstants.REQ_CONTACT_LIST: //un login pide su lista de contactos
-                //    CommandREQContactList(clientConnection, dato);
-                //    break;
-                //case OpCodeConstants.REQ_SERVER_CONNECT: //un servidor se conecta y registra en el dns
-                //    CommandREQServerConnect(clientConnection, dato);
-                //    break;
-                //case OpCodeConstants.REQ_FIND_CONTACT: //un login hace una busqueda de contactos
-                //    CommandREQFindContacts(clientConnection, dato);
-                //    break;
-                //case OpCodeConstants.REQ_ADD_CONTACT: //un login quiere agregar un contacto nuevo
-                //    CommandREQADDContact(clientConnection, dato);
-                //    break;
-                //case OpCodeConstants.REQ_GET_SERVERS: //Obtiene la lista de servidores online
-                //    CommandREQGetServers(clientConnection, dato);
-                //    break;
-                //case OpCodeConstants.REQ_SEND_CHAT_MSG: //un login le envia un mensaje de chat a otro
-                //    CommandREQSendChatMessage(clientConnection, dato);
-                //    break;
-                //case OpCodeConstants.REQ_SERVER_INFO: //un login pide los datos de su servidor
-                //    CommandREQServerInfo(clientConnection, dato);
-                //    break;
-                //case OpCodeConstants.REQ_CHANGE_STATUS: //Pedido de cambio de estado de online a offline y viceversa
-                //    CommandREQChangeStatus(clientConnection, dato);
-                //    break;
-                default:
-                    break;
-            }
-        }
-    
-
+      
      
       
-        private void CommandREQServerConnect(Connection newConnection, Data dato)
-        {
-            string[] tmp = dato.Payload.Message.Split(':');//viene name: ip : port : user count
-            string serverName   = tmp[0];
-            string serverIp     = tmp[1];
-            int serverPort      = int.Parse(tmp[2]);
-            int serverTxPort    = int.Parse(tmp[3]);
-            int userCount       = int.Parse(tmp[4]);
+        //private void CommandREQServerConnect(Connection newConnection, Data dato)
+        //{
+        //    string[] tmp = dato.Payload.Message.Split(':');//viene name: ip : port : user count
+        //    string serverName   = tmp[0];
+        //    string serverIp     = tmp[1];
+        //    int serverPort      = int.Parse(tmp[2]);
+        //    int serverTxPort    = int.Parse(tmp[3]);
+        //    int userCount       = int.Parse(tmp[4]);
 
-            newConnection.IsServer  = true;
-            newConnection.Ip        = serverIp;
-            newConnection.Name      = serverName;
-            newConnection.Port      = serverPort;
-            newConnection.TransferPort = serverTxPort;
-            newConnection.UserCount = userCount;
+        //    newConnection.IsServer  = true;
+        //    newConnection.Ip        = serverIp;
+        //    newConnection.Name      = serverName;
+        //    newConnection.Port      = serverPort;
+        //    newConnection.TransferPort = serverTxPort;
+        //    newConnection.UserCount = userCount;
           
 
-            SingletonDeviceConnection ssc = SingletonDeviceConnection.GetInstance();
-            Connection oldConnection = ssc.GetDevice(serverName);
-            if (oldConnection != null)
-            {
-                ssc.RemoveDevice(serverName);
-                oldConnection.CloseConn();
-            }
+        //    SingletonDeviceConnection ssc = SingletonDeviceConnection.GetInstance();
+        //    Connection oldConnection = ssc.GetDevice(serverName);
+        //    if (oldConnection != null)
+        //    {
+        //        ssc.RemoveDevice(serverName);
+        //        oldConnection.CloseConn();
+        //    }
 
-            ssc.AddDevice(serverName, newConnection);
-            log.InfoFormat("Agregado nuevo servidor: {0}:{2} , name:{1}, userCount:{3}", 
-                newConnection.Ip,  newConnection.Name, newConnection.Port, newConnection.UserCount);
-         //   SendMessage(newConnection, Command.RES, OpCodeConstants.REQ_SERVER_CONNECT, new Payload("SUCCESS"));
-        }
+        //    ssc.AddDevice(serverName, newConnection);
+        //    log.InfoFormat("Agregado nuevo servidor: {0}:{2} , name:{1}, userCount:{3}", 
+        //        newConnection.Ip,  newConnection.Name, newConnection.Port, newConnection.UserCount);
+        // //   SendMessage(newConnection, Command.RES, OpCodeConstants.REQ_SERVER_CONNECT, new Payload("SUCCESS"));
+        //}
 
 
 
