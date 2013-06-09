@@ -56,14 +56,14 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(56, 13);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(147, 20);
+            this.textBox1.Size = new System.Drawing.Size(121, 20);
             this.textBox1.TabIndex = 1;
             // 
             // btnOnOff
             // 
             this.btnOnOff.Location = new System.Drawing.Point(56, 52);
             this.btnOnOff.Name = "btnOnOff";
-            this.btnOnOff.Size = new System.Drawing.Size(149, 23);
+            this.btnOnOff.Size = new System.Drawing.Size(121, 23);
             this.btnOnOff.TabIndex = 2;
             this.btnOnOff.Text = "Encender";
             this.btnOnOff.UseVisualStyleBackColor = true;
