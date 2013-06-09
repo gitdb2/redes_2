@@ -70,9 +70,10 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
 
         private void CallRemotingGestionServer(StatusFrameDecoded message)
         {
+            TcpChannel tcpChannel = null;
             try
             {
-                TcpChannel tcpChannel = new TcpChannel();
+                 tcpChannel = new TcpChannel();
                 ChannelServices.RegisterChannel(tcpChannel, false);
 
                 Type requiredType = typeof(IDevicesData);
@@ -84,6 +85,14 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             {
 
                 log.Error("Se cagó", e);
+            }
+            finally
+            {
+                if (tcpChannel != null)
+                {
+                    ChannelServices.UnregisterChannel(tcpChannel);
+                    
+                }
             }
 
         }
