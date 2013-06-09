@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace MonitoringDevice
 {
-    public partial class Form1 : Form
+    public partial class Device : Form
     {
-        public Form1()
+        public Device()
         {
             InitializeComponent();
         }
