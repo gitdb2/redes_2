@@ -1,4 +1,4 @@
-﻿namespace MonitoringDevice
+﻿namespace ort.edu.uy.obligatorio2.MonitoringDevice
 {
     partial class Device
     {
