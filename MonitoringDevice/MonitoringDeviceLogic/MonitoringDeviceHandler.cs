@@ -25,12 +25,19 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
         public void TurnOn(string deviceName)
         {
             this.DeviceName = deviceName;
-            connection = new Connection(deviceName, new TcpClient(ipCommServer, portCommServer), new ReceiveEventHandler());
+            //FIXME
+            //cuando haya un servidor del otro lado
+            //connection = new Connection(deviceName, new TcpClient(ipCommServer, portCommServer), new ReceiveEventHandler());
+            this.IsTurnedOn = true;
         }
 
         public void TurnOff()
         {
-
+            if (this.connection != null)
+            {
+                this.connection.CloseConn();
+            }
+            this.IsTurnedOn = false;
         }
 
     }

@@ -35,12 +35,17 @@
             this.toolStripStatusLabelName = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelStatusOnOff = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.lblFailures = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.btnSendFailure = new System.Windows.Forms.Button();
             this.listBoxMessageLog = new System.Windows.Forms.ListBox();
             this.lblMessageLog = new System.Windows.Forms.Label();
+            this.comboFailureType = new System.Windows.Forms.ComboBox();
+            this.comboFailureAlertLevel = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSendFailure = new System.Windows.Forms.Button();
+            this.lblFailureType = new System.Windows.Forms.Label();
+            this.lblFailureAlert = new System.Windows.Forms.Label();
+            this.lblLog = new System.Windows.Forms.Label();
             this.statusStrip.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblName
@@ -74,9 +79,9 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelName,
             this.toolStripStatusLabelStatusOnOff});
-            this.statusStrip.Location = new System.Drawing.Point(0, 348);
+            this.statusStrip.Location = new System.Drawing.Point(0, 457);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(304, 22);
+            this.statusStrip.Size = new System.Drawing.Size(298, 22);
             this.statusStrip.TabIndex = 3;
             this.statusStrip.Text = "Estado Actual:";
             // 
@@ -101,59 +106,98 @@
             this.lblStatus.TabIndex = 4;
             this.lblStatus.Text = "Cambiar Estado:";
             // 
-            // lblFailures
-            // 
-            this.lblFailures.AutoSize = true;
-            this.lblFailures.Location = new System.Drawing.Point(10, 99);
-            this.lblFailures.Name = "lblFailures";
-            this.lblFailures.Size = new System.Drawing.Size(37, 13);
-            this.lblFailures.TabIndex = 5;
-            this.lblFailures.Text = "Fallas:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(56, 96);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 6;
-            // 
-            // btnSendFailure
-            // 
-            this.btnSendFailure.Location = new System.Drawing.Point(193, 94);
-            this.btnSendFailure.Name = "btnSendFailure";
-            this.btnSendFailure.Size = new System.Drawing.Size(88, 23);
-            this.btnSendFailure.TabIndex = 7;
-            this.btnSendFailure.Text = "Reportar Falla";
-            this.btnSendFailure.UseVisualStyleBackColor = true;
-            // 
             // listBoxMessageLog
             // 
             this.listBoxMessageLog.FormattingEnabled = true;
-            this.listBoxMessageLog.Location = new System.Drawing.Point(12, 164);
+            this.listBoxMessageLog.Location = new System.Drawing.Point(18, 272);
             this.listBoxMessageLog.Name = "listBoxMessageLog";
-            this.listBoxMessageLog.Size = new System.Drawing.Size(268, 173);
+            this.listBoxMessageLog.Size = new System.Drawing.Size(262, 173);
             this.listBoxMessageLog.TabIndex = 8;
             // 
             // lblMessageLog
             // 
             this.lblMessageLog.AutoSize = true;
-            this.lblMessageLog.Location = new System.Drawing.Point(9, 137);
+            this.lblMessageLog.Location = new System.Drawing.Point(37, 218);
             this.lblMessageLog.Name = "lblMessageLog";
             this.lblMessageLog.Size = new System.Drawing.Size(91, 13);
             this.lblMessageLog.TabIndex = 9;
             this.lblMessageLog.Text = "Log de Mensajes:";
             // 
+            // comboFailureType
+            // 
+            this.comboFailureType.FormattingEnabled = true;
+            this.comboFailureType.Location = new System.Drawing.Point(107, 19);
+            this.comboFailureType.Name = "comboFailureType";
+            this.comboFailureType.Size = new System.Drawing.Size(144, 21);
+            this.comboFailureType.TabIndex = 11;
+            // 
+            // comboFailureAlertLevel
+            // 
+            this.comboFailureAlertLevel.FormattingEnabled = true;
+            this.comboFailureAlertLevel.Location = new System.Drawing.Point(107, 56);
+            this.comboFailureAlertLevel.Name = "comboFailureAlertLevel";
+            this.comboFailureAlertLevel.Size = new System.Drawing.Size(144, 21);
+            this.comboFailureAlertLevel.TabIndex = 12;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblFailureAlert);
+            this.groupBox1.Controls.Add(this.lblFailureType);
+            this.groupBox1.Controls.Add(this.btnSendFailure);
+            this.groupBox1.Controls.Add(this.comboFailureType);
+            this.groupBox1.Controls.Add(this.comboFailureAlertLevel);
+            this.groupBox1.Location = new System.Drawing.Point(13, 90);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(267, 141);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Fallas";
+            // 
+            // btnSendFailure
+            // 
+            this.btnSendFailure.Location = new System.Drawing.Point(70, 102);
+            this.btnSendFailure.Name = "btnSendFailure";
+            this.btnSendFailure.Size = new System.Drawing.Size(127, 23);
+            this.btnSendFailure.TabIndex = 13;
+            this.btnSendFailure.Text = "Reportar Falla";
+            this.btnSendFailure.UseVisualStyleBackColor = true;
+            // 
+            // lblFailureType
+            // 
+            this.lblFailureType.AutoSize = true;
+            this.lblFailureType.Location = new System.Drawing.Point(70, 19);
+            this.lblFailureType.Name = "lblFailureType";
+            this.lblFailureType.Size = new System.Drawing.Size(31, 13);
+            this.lblFailureType.TabIndex = 14;
+            this.lblFailureType.Text = "Tipo:";
+            // 
+            // lblFailureAlert
+            // 
+            this.lblFailureAlert.AutoSize = true;
+            this.lblFailureAlert.Location = new System.Drawing.Point(22, 59);
+            this.lblFailureAlert.Name = "lblFailureAlert";
+            this.lblFailureAlert.Size = new System.Drawing.Size(79, 13);
+            this.lblFailureAlert.TabIndex = 15;
+            this.lblFailureAlert.Text = "Nivel de Alerta:";
+            // 
+            // lblLog
+            // 
+            this.lblLog.AutoSize = true;
+            this.lblLog.Location = new System.Drawing.Point(15, 247);
+            this.lblLog.Name = "lblLog";
+            this.lblLog.Size = new System.Drawing.Size(91, 13);
+            this.lblLog.TabIndex = 14;
+            this.lblLog.Text = "Log de Mensajes:";
+            // 
             // Device
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 370);
+            this.ClientSize = new System.Drawing.Size(298, 479);
+            this.Controls.Add(this.lblLog);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblMessageLog);
             this.Controls.Add(this.listBoxMessageLog);
-            this.Controls.Add(this.btnSendFailure);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.lblFailures);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.btnOnOff);
@@ -165,6 +209,8 @@
             this.Text = "Dispositivo de Monitoreo";
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,11 +225,15 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelName;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelStatusOnOff;
         private System.Windows.Forms.Label lblStatus;
-        private System.Windows.Forms.Label lblFailures;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button btnSendFailure;
         private System.Windows.Forms.ListBox listBoxMessageLog;
         private System.Windows.Forms.Label lblMessageLog;
+        private System.Windows.Forms.ComboBox comboFailureType;
+        private System.Windows.Forms.ComboBox comboFailureAlertLevel;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblFailureAlert;
+        private System.Windows.Forms.Label lblFailureType;
+        private System.Windows.Forms.Button btnSendFailure;
+        private System.Windows.Forms.Label lblLog;
     }
 }
 
