@@ -21,9 +21,11 @@ class Program
         Type commonInterfaceType = Type.GetType("MovieTicket");
 
         RemotingConfiguration.RegisterWellKnownServiceType(commonInterfaceType, "MovieTicketBooking", WellKnownObjectMode.SingleCall);
-
+        
         System.Console.WriteLine("Press ENTER to quitnn");
         System.Console.ReadLine();
+
+       // ChannelServices.UnregisterChannel(tcpChannel);
     }
 
 }
