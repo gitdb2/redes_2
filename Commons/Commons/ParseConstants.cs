@@ -12,7 +12,7 @@ namespace uy.edu.ort.obligatorio.Commons
 
         public const char SEPARATOR_AT = '@';
 
-        public const string DATE_FORMAT_FAILURE_REPORT = "yyyyMMdd HH:mm:ss";
+        public const string DATE_TIME_FORMAT = "yyyyMMdd HH:mm:ss";
 
     }
 }

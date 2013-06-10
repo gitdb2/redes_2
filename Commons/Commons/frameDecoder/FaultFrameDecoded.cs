@@ -11,9 +11,6 @@ namespace uy.edu.ort.obligatorio.Commons.frameDecoder
         public int AlarmType { get; private set; }
         public int AlarmLevel { get; private set; }
         public DateTime AlarmDateTime { get; private set; }
-        public const string DATE_TIME_FORMAT = "yyyyMMdd HH:mm:ss";
-
-
 
         public override void Parse(string frame)
         {
@@ -26,10 +23,8 @@ namespace uy.edu.ort.obligatorio.Commons.frameDecoder
                 AlarmType = int.Parse(payload[0]);
                 AlarmLevel = int.Parse(payload[1]);
                 AlarmDateTime = DateTime.ParseExact(payload[2],
-                                          DATE_TIME_FORMAT,
+                                          ParseConstants.DATE_TIME_FORMAT,
                                           CultureInfo.InvariantCulture);
-               
-                
             }
             catch (Exception e)
             {
@@ -44,7 +39,8 @@ namespace uy.edu.ort.obligatorio.Commons.frameDecoder
                 DeviceId:       [{0}]
                 AlarmType:      [{1}]
                 AlarmLevel:     [{2}]
-                AlarmDateTime:  [{3}]", DeviceId, AlarmType, AlarmLevel, AlarmDateTime.ToString(DATE_TIME_FORMAT));
+                AlarmDateTime:  [{3}]", DeviceId, AlarmType, AlarmLevel, AlarmDateTime.ToString(ParseConstants.DATE_TIME_FORMAT));
         }
+
     }
 }
