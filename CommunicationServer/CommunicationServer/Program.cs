@@ -15,6 +15,9 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
     class Program
     {
         private ILog log;
+        public bool running = true;
+        public TcpListener server;
+
         static void Main(string[] args)
         {
             Program p = new Program();
@@ -22,11 +25,6 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             Console.WriteLine("Enter para terminar.");
             Console.ReadLine();
         }
-
-
- 
-        public bool running = true;
-        public TcpListener server;
 
         public Program()
         {

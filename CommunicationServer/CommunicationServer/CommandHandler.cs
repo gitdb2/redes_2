@@ -54,16 +54,10 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             }
         }
 
-
-
         private void CommandREQFailureReport(Connection clientConnection, Data dato)
         {
             FaultFrameDecoded message = new FaultFrameDecoded();
             message.Parse(dato.Payload.Message);
-
-
-          
-
             log.DebugFormat("Llego REQ Failure con {0}", message.ToString());
             log.DebugFormat("Notificar a server dispositivos y estadisticas");
         }
@@ -83,7 +77,6 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             }
             catch (Exception e)
             {
-
                 log.Error("Se cagó", e);
             }
             finally
@@ -91,7 +84,6 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
                 if (tcpChannel != null)
                 {
                     ChannelServices.UnregisterChannel(tcpChannel);
-                    
                 }
             }
 
@@ -101,25 +93,17 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
         {
             StatusFrameDecoded message = new StatusFrameDecoded();
             message.Parse(dato.Payload.Message);
-
-
             CallRemotingGestionServer(message);
             log.DebugFormat("Llego REQ STATUS con {0}", message.ToString());
             log.DebugFormat("Notificar a server dispositivos y estadisticas");
         }
-    
-
-
-
 
         public void Logout(Connection clientConnection)
         {
-          
             log.InfoFormat("Desconectando el Dispositivo {0}", clientConnection.Name);
             Console.WriteLine("Desconectando el Dispositivo {0}", clientConnection.Name);
             SingletonDeviceConnection.GetInstance().RemoveDevice(clientConnection.Name);
-           
-           
         }
+
     }
 }
