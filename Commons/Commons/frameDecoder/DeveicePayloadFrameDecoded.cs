@@ -10,7 +10,6 @@ namespace uy.edu.ort.obligatorio.Commons.frameDecoder
     {
         public string DeviceId { get; private set; }
         public string Payload { get; private set; }
-
      
         public const string DELIMITER = "|";
 
@@ -19,7 +18,6 @@ namespace uy.edu.ort.obligatorio.Commons.frameDecoder
         public virtual void Parse(string frame)
         {
             //deviceId|message....
-
             try
             {
                 string[] payload = frame.Split(new string[] { DELIMITER }, 2, StringSplitOptions.None);
@@ -41,5 +39,6 @@ namespace uy.edu.ort.obligatorio.Commons.frameDecoder
                 DeviceId: [{0}]
                 Payload: [{1}]", DeviceId, Payload);
         }
+
     }
 }

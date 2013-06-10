@@ -48,7 +48,6 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
                 case OpCodeConstants.RES_SEND_FAILURE_REPORT: //viene una Alarma de falla de un dispositivo
                     CommandREQFailureReport(connection, dato);
                     break;
-               
                 default:
                     break;
             }
@@ -58,8 +57,18 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
         {
             FaultFrameDecoded message = new FaultFrameDecoded();
             message.Parse(dato.Payload.Message);
+            SingletonDeviceInfoHandler.GetInstance().UpdateDeviceStatus(message);
             log.DebugFormat("Llego REQ Failure con {0}", message.ToString());
             log.DebugFormat("Notificar a server dispositivos y estadisticas");
+        }
+
+        private void CommandREQStatusReport(Connection clientConnection, Data dato)
+        {
+            StatusFrameDecoded message = new StatusFrameDecoded();
+            message.Parse(dato.Payload.Message);
+            SingletonDeviceInfoHandler.GetInstance().UpdateDeviceStatus(message);
+            log.DebugFormat("Llego REQ STATUS con {0}", message.ToString());
+            log.DebugFormat("Notificar a server estadisticas");
         }
 
         private void CallRemotingGestionServer(StatusFrameDecoded message)
@@ -67,7 +76,7 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             TcpChannel tcpChannel = null;
             try
             {
-                 tcpChannel = new TcpChannel();
+                tcpChannel = new TcpChannel();
                 ChannelServices.RegisterChannel(tcpChannel, false);
 
                 Type requiredType = typeof(IDevicesData);
@@ -87,15 +96,6 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
                 }
             }
 
-        }
-
-        private void CommandREQStatusReport(Connection clientConnection, Data dato)
-        {
-            StatusFrameDecoded message = new StatusFrameDecoded();
-            message.Parse(dato.Payload.Message);
-            CallRemotingGestionServer(message);
-            log.DebugFormat("Llego REQ STATUS con {0}", message.ToString());
-            log.DebugFormat("Notificar a server dispositivos y estadisticas");
         }
 
         public void Logout(Connection clientConnection)
