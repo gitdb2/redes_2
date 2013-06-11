@@ -31,7 +31,7 @@ namespace Server
                 // Add an event handler for the ReceiveCompleted event.
                 myQueue.ReceiveCompleted +=
                     new ReceiveCompletedEventHandler(MyReceiveCompleted);
-
+                
                 // Begin the asynchronous receive operation.
                 myQueue.BeginReceive();
 
@@ -68,7 +68,6 @@ namespace Server
 
                 try
                 {
-
                     m.Formatter = new XmlMessageFormatter(new String[] { "System.String,mscorlib" });
                     txt = m.Body.ToString();
                 }
