@@ -115,6 +115,10 @@
     <None Include="settings.properties" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Commons\Commons\Commons.csproj">
+      <Project>{A4983E71-5669-45E3-A3C8-C428E056EF62}</Project>
+      <Name>Commons</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClientDevicesLogic\ClientDevicesLogic.csproj">
       <Project>{A43CF22D-225D-4E44-BF6A-C3063D49764E}</Project>
       <Name>ClientDevicesLogic</Name>

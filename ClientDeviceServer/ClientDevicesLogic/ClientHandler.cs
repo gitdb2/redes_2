@@ -24,7 +24,15 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             return instance;
         }
 
-        public ICommServer ConnectToCommServer()
+        public List<DeviceInfo> GetDevices()
+        {
+            ICommServer iCommServer = ConnectToCommServer();
+            List<DeviceInfo> devices = iCommServer.GetDevices();
+            DisconnectFromCommServer();
+            return devices;
+        }
+
+        private ICommServer ConnectToCommServer()
         {
             log.Info("Estableciendo la conexion al servidor de comunicaciones");
             this.tcpChannel = new TcpChannel();
@@ -33,7 +41,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             return (ICommServer) Activator.GetObject(requiredType, GetCommServerConnectionString());
         }
 
-        public void DisconnectFromCommServer()
+        private void DisconnectFromCommServer()
         {
             try
             {
@@ -50,7 +58,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("tcp://");
-            sb.Append(Settings.GetInstance().GetProperty("commserver.ip", "localhost")).Append("/");
+            sb.Append(Settings.GetInstance().GetProperty("commserver.ip", "localhost"));
             sb.Append(":").Append(Settings.GetInstance().GetProperty("commserver.port", "9998")).Append("/");
             sb.Append(Settings.GetInstance().GetProperty("commserver.name", "CommServer"));
             return sb.ToString();

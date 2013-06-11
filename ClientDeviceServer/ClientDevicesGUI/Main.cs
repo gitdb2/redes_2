@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ort.edu.uy.obligatorio2.ClientDevicesLogic;
+using uy.edu.ort.obligatorio.Commons;
 
 namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
 {

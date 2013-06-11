@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Connection.cs" />
     <Compile Include="DataProccessor.cs" />
+    <Compile Include="DeviceFailureInfo.cs" />
+    <Compile Include="DeviceInfo.cs" />
+    <Compile Include="DeviceStatusInfo.cs" />
     <Compile Include="frameDecoder\FaultFrameDecoded.cs" />
     <Compile Include="frameDecoder\DeveicePayloadFrameDecoded.cs" />
     <Compile Include="frameDecoder\StatusFrameDecoded.cs" />
