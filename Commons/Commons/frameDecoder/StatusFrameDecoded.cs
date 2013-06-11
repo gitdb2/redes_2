@@ -10,7 +10,6 @@ namespace uy.edu.ort.obligatorio.Commons.frameDecoder
         public bool StatusOnOff { get; private set; }
         public long UpTime { get; private set; }
 
-
         public override void Parse(string frame)
         {
             base.Parse(frame);
@@ -36,5 +35,6 @@ namespace uy.edu.ort.obligatorio.Commons.frameDecoder
                 StatusOnOff: [{2}]
                 UpTime:      [{3}]", DeviceId, Payload, StatusOnOff, UpTime);
         }
+
     }
 }

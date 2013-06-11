@@ -10,7 +10,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
     {
         private static log4net.ILog log;
 
-   
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

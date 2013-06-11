@@ -45,7 +45,6 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             return devicesMap.ContainsKey(name);
         }
 
-
         public Connection GetDevice(string name)
         {
             Connection ret = null;
