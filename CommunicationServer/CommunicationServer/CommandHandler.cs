@@ -79,9 +79,9 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
                 tcpChannel = new TcpChannel();
                 ChannelServices.RegisterChannel(tcpChannel, false);
 
-                Type requiredType = typeof(IDevicesData);
+                Type requiredType = typeof(ICommServer);
 
-                IDevicesData remoteObject = (IDevicesData)Activator.GetObject(requiredType, "tcp://localhost:9998/CommServer");
+                ICommServer remoteObject = (ICommServer)Activator.GetObject(requiredType, "tcp://localhost:9998/CommServer");
                 remoteObject.SetDeviceStatus(message.DeviceId, message.StatusOnOff, message.UpTime);
             }
             catch (Exception e)

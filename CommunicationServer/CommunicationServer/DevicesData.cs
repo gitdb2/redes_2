@@ -6,7 +6,7 @@ using uy.edu.ort.obligatorio.Commons;
 
 namespace uy.edu.ort.obligatorio2.CommunicationServer
 {
-    public class DevicesData : MarshalByRefObject, IDevicesData
+    public class DevicesData : MarshalByRefObject, ICommServer
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
