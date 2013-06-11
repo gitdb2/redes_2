@@ -95,9 +95,12 @@ namespace ServidorEstadisticas.queue
                 log.Error(exc.Message);
             }
         }
-
-
+        
+        public void ReleaseResources()
+        {
+            messageQueue.Close(); 
+        }
     }
 
-    }
+   
 }
