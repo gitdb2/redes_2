@@ -16,7 +16,7 @@ namespace ServidorEstadisticas.queue
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private MessageQueue messageQueue;
-        private bool isRunning;
+        private bool isRunning = false;
 
         private static QueueHandler instance = new QueueHandler();
 
@@ -40,7 +40,7 @@ namespace ServidorEstadisticas.queue
             {
                 messageQueue = new MessageQueue(queuePath);
             }
-            isRunning = true;
+            
             messageQueue.Formatter = new BinaryMessageFormatter();
             messageQueue.ReceiveCompleted += OnReceiveCompleted;
            
@@ -48,6 +48,7 @@ namespace ServidorEstadisticas.queue
 
         public void StartReceiving()
         {
+            isRunning = true;
             messageQueue.BeginReceive();
         }
 
