@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace uy.edu.ort.obligatorio2.CommunicationServer
+namespace uy.edu.ort.obligatorio.Commons
 {
+    [Serializable]
     public class DeviceFailureInfo
     {
 

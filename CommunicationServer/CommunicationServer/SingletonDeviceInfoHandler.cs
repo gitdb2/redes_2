@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using uy.edu.ort.obligatorio.Commons.frameDecoder;
+using uy.edu.ort.obligatorio.Commons;
 
 namespace uy.edu.ort.obligatorio2.CommunicationServer
 {
@@ -60,6 +61,11 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             {
                 this.devicesInfo.Add(message.DeviceId, new DeviceInfo() { LastStatusInfo = newStatus });
             }
+        }
+
+        public List<DeviceInfo> GetDevices()
+        {
+            return devicesInfo.Values.ToList();
         }
 
     }

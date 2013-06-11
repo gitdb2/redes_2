@@ -51,10 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandler.cs" />
-    <Compile Include="DeviceInfo.cs" />
-    <Compile Include="DevicesData.cs" />
-    <Compile Include="DeviceFailureInfo.cs" />
-    <Compile Include="DeviceStatusInfo.cs" />
+    <Compile Include="ICommServerImpl.cs" />
     <Compile Include="queue\StatisticsQueueClient.cs" />
     <Compile Include="ReceiveEventHandler.cs" />
     <Compile Include="RemotingServer.cs" />
