@@ -40,6 +40,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -54,6 +55,7 @@
     <Compile Include="DevicesData.cs" />
     <Compile Include="DeviceFailureInfo.cs" />
     <Compile Include="DeviceStatusInfo.cs" />
+    <Compile Include="queue\StatisticsQueueClient.cs" />
     <Compile Include="ReceiveEventHandler.cs" />
     <Compile Include="RemotingServer.cs" />
     <Compile Include="SingletonDeviceConnection.cs" />

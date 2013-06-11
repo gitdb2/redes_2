@@ -41,6 +41,8 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             Console.WriteLine("----- Communication Server -----");
             Console.WriteLine("[{0}] Starting server...", DateTime.Now);
 
+  
+
             server = new TcpListener(ip, port);
             server.Start();
             Console.WriteLine("[{0}] Server is running properly!", DateTime.Now);

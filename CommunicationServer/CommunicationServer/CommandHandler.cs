@@ -8,6 +8,8 @@ using System.Text.RegularExpressions;
 using uy.edu.ort.obligatorio.Commons.frameDecoder;
 using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Channels.Tcp;
+using uy.edu.ort.obligatorio2.CommunicationServer.queue;
+using uy.edu.ort.obligatorio.Commons.queue;
 
 namespace uy.edu.ort.obligatorio2.CommunicationServer
 {
@@ -60,6 +62,9 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             SingletonDeviceInfoHandler.GetInstance().UpdateDeviceStatus(message);
             log.DebugFormat("Llego REQ Failure con {0}", message.ToString());
             log.DebugFormat("Notificar a server dispositivos y estadisticas");
+
+            MessageBean messageBean = new MessageBean() { Message = dato.Payload.Message, MessageType = MessageTypeEnum.FAULT };
+            StatisticsQueueClient.GetInstance().SendMessages(messageBean);
         }
 
         private void CommandREQStatusReport(Connection clientConnection, Data dato)
@@ -69,6 +74,9 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             SingletonDeviceInfoHandler.GetInstance().UpdateDeviceStatus(message);
             log.DebugFormat("Llego REQ STATUS con {0}", message.ToString());
             log.DebugFormat("Notificar a server estadisticas");
+
+            MessageBean messageBean = new MessageBean(){Message = dato.Payload.Message, MessageType = MessageTypeEnum.STATUS};
+            StatisticsQueueClient.GetInstance().SendMessages(messageBean);
         }
 
         private void CallRemotingGestionServer(StatusFrameDecoded message)
