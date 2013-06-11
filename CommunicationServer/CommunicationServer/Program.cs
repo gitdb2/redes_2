@@ -17,6 +17,7 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
         private ILog log;
         public bool running = true;
         public TcpListener server;
+        private RemotingServer remotingServer;
 
         static void Main(string[] args)
         {
@@ -45,15 +46,22 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             Console.WriteLine("[{0}] Server is running properly!", DateTime.Now);
             log.Info("Server is running properly!");
 
+            StartRemotingServer();
             Listen();
         }
 
-        void Listen()  // Listen to incoming connections.
+        private void StartRemotingServer()
+        {
+            this.remotingServer = new RemotingServer();
+            remotingServer.StartRemotingServer();
+        }
+
+        void Listen()
         {
             while (running)
             {
-                TcpClient tcpClient = server.AcceptTcpClient();  // Accept incoming connection.
-                Connection client = new Connection(tcpClient, new ReceiveEventHandler());     // Handle in another thread.
+                TcpClient tcpClient = server.AcceptTcpClient();
+                Connection client = new Connection(tcpClient, new ReceiveEventHandler());
             }
         }
 

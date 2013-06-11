@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using uy.edu.ort.obligatorio.Commons;
 
-namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
+namespace uy.edu.ort.obligatorio2.CommunicationServer
 {
     public class DevicesData : MarshalByRefObject, IDevicesData
     {

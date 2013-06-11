@@ -113,7 +113,7 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
             {
                 int alertLevel = Int16.Parse((string)this.comboFailureAlertLevel.SelectedItem);
                 int failureType = Int16.Parse((string)this.comboFailureType.SelectedItem);
-                string formattedDate = DateTime.Now.ToString(ParseConstants.DATE_FORMAT_FAILURE_REPORT);
+                string formattedDate = DateTime.Now.ToString(ParseConstants.DATE_TIME_FORMAT);
                 this.deviceHandler.SendFailureReport(alertLevel, failureType, formattedDate);
                 AppendToLog(CreateFailureMessage(alertLevel, failureType, formattedDate));
             }
