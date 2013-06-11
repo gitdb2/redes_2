@@ -31,7 +31,6 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             log4net.Config.XmlConfigurator.Configure(new FileInfo("log4net.config"));
             log4net.GlobalContext.Properties["serverName"] = "Communication Server";
             log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         
             string listenAddressStr = Settings.GetInstance().GetProperty("listen.ip","ANY");
             IPAddress ip = "ANY".Equals(listenAddressStr) ? IPAddress.Any : IPAddress.Parse(listenAddressStr);
