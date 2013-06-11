@@ -40,17 +40,12 @@ namespace ServidorEstadisticas.queue
             {
                 messageQueue = new MessageQueue(queuePath);
             }
-            
+            isRunning = true;
             messageQueue.Formatter = new BinaryMessageFormatter();
             messageQueue.ReceiveCompleted += OnReceiveCompleted;
-           
-        }
-
-        public void StartReceiving()
-        {
-            isRunning = true;
             messageQueue.BeginReceive();
         }
+
 
          private void OnReceiveCompleted(Object source, ReceiveCompletedEventArgs asyncResult)
         {
