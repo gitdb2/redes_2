@@ -18,9 +18,15 @@ namespace ServidorEstadisticas.queue
         private MessageQueue messageQueue;
         private bool isRunning;
 
-        public QueueHandler()
-        {
+        private static QueueHandler instance = new QueueHandler();
+
+        private QueueHandler() {
             InitializeQueue();
+        }
+
+        public static QueueHandler GetInstance()
+        {
+            return instance;
         }
 
         private void InitializeQueue()
@@ -37,6 +43,11 @@ namespace ServidorEstadisticas.queue
             isRunning = true;
             messageQueue.Formatter = new BinaryMessageFormatter();
             messageQueue.ReceiveCompleted += OnReceiveCompleted;
+           
+        }
+
+        public void StartReceiving()
+        {
             messageQueue.BeginReceive();
         }
 

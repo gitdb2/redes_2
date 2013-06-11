@@ -6,6 +6,7 @@ using log4net;
 using System.IO;
 using System.Reflection;
 using Comunicacion;
+using ServidorEstadisticas.queue;
 
 namespace uy.edu.ort.obligatorio2.ServidorEstadisticas
 {
@@ -36,6 +37,8 @@ namespace uy.edu.ort.obligatorio2.ServidorEstadisticas
             Console.WriteLine("----- Statistics Server -----");
             Console.WriteLine("[{0}] Starting server...", DateTime.Now);
 
+
+
             SetUpServices();
             Console.WriteLine("[{0}] Server is running properly!", DateTime.Now);
             log.Info("Server is running properly!");
@@ -45,7 +48,9 @@ namespace uy.edu.ort.obligatorio2.ServidorEstadisticas
 
         private void SetUpServices()
         {
-            throw new NotImplementedException();
+            QueueHandler.GetInstance();//configura la cola
+
+            //iniciar servidor de de remoting
         }
 
 
