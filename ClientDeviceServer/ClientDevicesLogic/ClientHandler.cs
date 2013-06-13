@@ -98,5 +98,17 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             }
         }
 
+        public void ModifyUser(string userName, List<DeviceInfo> userNewDevices)
+        {
+            if (!this.userData.ContainsKey(userName))
+            {
+                throw new Exception("El usuario no existe");
+            }
+            else
+            {
+                this.userData[userName] = userNewDevices;                
+            }
+        }
+
     }
 }

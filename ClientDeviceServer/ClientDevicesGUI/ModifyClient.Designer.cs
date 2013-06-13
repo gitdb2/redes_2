@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtBoxName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
             this.lblDevices = new System.Windows.Forms.Label();
             this.listBoxAvailable = new System.Windows.Forms.ListBox();
             this.listBoxSelected = new System.Windows.Forms.ListBox();
@@ -40,38 +38,23 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblSelectClient = new System.Windows.Forms.Label();
             this.comboBoxAllClients = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.lvlSelectedDevices = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // txtBoxName
-            // 
-            this.txtBoxName.Location = new System.Drawing.Point(90, 60);
-            this.txtBoxName.Name = "txtBoxName";
-            this.txtBoxName.Size = new System.Drawing.Size(165, 20);
-            this.txtBoxName.TabIndex = 0;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(15, 63);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(47, 13);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "Nombre:";
             // 
             // lblDevices
             // 
             this.lblDevices.AutoSize = true;
-            this.lblDevices.Location = new System.Drawing.Point(15, 100);
+            this.lblDevices.Location = new System.Drawing.Point(17, 68);
             this.lblDevices.Name = "lblDevices";
-            this.lblDevices.Size = new System.Drawing.Size(118, 13);
+            this.lblDevices.Size = new System.Drawing.Size(123, 13);
             this.lblDevices.TabIndex = 2;
-            this.lblDevices.Text = "Dispositivos Asociados:";
+            this.lblDevices.Text = "Dispositivos Disponibles:";
             // 
             // listBoxAvailable
             // 
             this.listBoxAvailable.FormattingEnabled = true;
-            this.listBoxAvailable.Location = new System.Drawing.Point(18, 131);
+            this.listBoxAvailable.Location = new System.Drawing.Point(20, 99);
             this.listBoxAvailable.Name = "listBoxAvailable";
             this.listBoxAvailable.Size = new System.Drawing.Size(145, 160);
             this.listBoxAvailable.TabIndex = 3;
@@ -79,55 +62,60 @@
             // listBoxSelected
             // 
             this.listBoxSelected.FormattingEnabled = true;
-            this.listBoxSelected.Location = new System.Drawing.Point(271, 131);
+            this.listBoxSelected.Location = new System.Drawing.Point(273, 99);
             this.listBoxSelected.Name = "listBoxSelected";
             this.listBoxSelected.Size = new System.Drawing.Size(145, 160);
             this.listBoxSelected.TabIndex = 4;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(180, 131);
+            this.btnAdd.Location = new System.Drawing.Point(182, 99);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Agregar";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(180, 160);
+            this.btnRemove.Location = new System.Drawing.Point(182, 128);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 6;
             this.btnRemove.Text = "Quitar";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnAddAll
             // 
-            this.btnAddAll.Location = new System.Drawing.Point(180, 189);
+            this.btnAddAll.Location = new System.Drawing.Point(182, 157);
             this.btnAddAll.Name = "btnAddAll";
             this.btnAddAll.Size = new System.Drawing.Size(75, 38);
             this.btnAddAll.TabIndex = 7;
             this.btnAddAll.Text = "Agregar Todos";
             this.btnAddAll.UseVisualStyleBackColor = true;
+            this.btnAddAll.Click += new System.EventHandler(this.btnAddAll_Click);
             // 
             // btnRemoveAll
             // 
-            this.btnRemoveAll.Location = new System.Drawing.Point(180, 233);
+            this.btnRemoveAll.Location = new System.Drawing.Point(182, 201);
             this.btnRemoveAll.Name = "btnRemoveAll";
             this.btnRemoveAll.Size = new System.Drawing.Size(75, 34);
             this.btnRemoveAll.TabIndex = 8;
             this.btnRemoveAll.Text = "Quitar Todos";
             this.btnRemoveAll.UseVisualStyleBackColor = true;
+            this.btnRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(236, 313);
+            this.btnClose.Location = new System.Drawing.Point(238, 281);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblSelectClient
             // 
@@ -145,22 +133,34 @@
             this.comboBoxAllClients.Name = "comboBoxAllClients";
             this.comboBoxAllClients.Size = new System.Drawing.Size(165, 21);
             this.comboBoxAllClients.TabIndex = 12;
+            this.comboBoxAllClients.SelectedIndexChanged += new System.EventHandler(this.comboBoxAllClients_SelectedIndexChanged);
             // 
-            // button1
+            // btnAccept
             // 
-            this.button1.Location = new System.Drawing.Point(125, 313);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Aceptar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAccept.Location = new System.Drawing.Point(127, 281);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(75, 23);
+            this.btnAccept.TabIndex = 13;
+            this.btnAccept.Text = "Aceptar";
+            this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lvlSelectedDevices
+            // 
+            this.lvlSelectedDevices.AutoSize = true;
+            this.lvlSelectedDevices.Location = new System.Drawing.Point(270, 68);
+            this.lvlSelectedDevices.Name = "lvlSelectedDevices";
+            this.lvlSelectedDevices.Size = new System.Drawing.Size(118, 13);
+            this.lvlSelectedDevices.TabIndex = 14;
+            this.lvlSelectedDevices.Text = "Dispositivos Asociados:";
             // 
             // ModifiyClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 359);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(430, 320);
+            this.Controls.Add(this.lvlSelectedDevices);
+            this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.comboBoxAllClients);
             this.Controls.Add(this.lblSelectClient);
             this.Controls.Add(this.btnClose);
@@ -171,8 +171,6 @@
             this.Controls.Add(this.listBoxSelected);
             this.Controls.Add(this.listBoxAvailable);
             this.Controls.Add(this.lblDevices);
-            this.Controls.Add(this.lblName);
-            this.Controls.Add(this.txtBoxName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "ModifiyClient";
@@ -184,8 +182,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtBoxName;
-        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblDevices;
         private System.Windows.Forms.ListBox listBoxAvailable;
         private System.Windows.Forms.ListBox listBoxSelected;
@@ -196,6 +192,7 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblSelectClient;
         private System.Windows.Forms.ComboBox comboBoxAllClients;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Label lvlSelectedDevices;
     }
 }
