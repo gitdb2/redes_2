@@ -140,6 +140,7 @@
             this.btnAccept.TabIndex = 11;
             this.btnAccept.Text = "Aceptar";
             this.btnAccept.UseVisualStyleBackColor = true;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
             // AddClient
             // 

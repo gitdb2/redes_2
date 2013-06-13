@@ -64,7 +64,6 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
             {
                 return "Apagado";
             }
-          
         }
 
         private void ChangeStatusLabels()
@@ -149,8 +148,6 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
         {
             stopwatch.Stop();
             this.deviceHandler.IsTurnedOn = !this.deviceHandler.IsTurnedOn;
-            
-         //   statusButton.Tag = !(bool)statusButton.Tag;
             ChangeStatusLabels();
             stopwatch.Reset();
             stopwatch.Start();

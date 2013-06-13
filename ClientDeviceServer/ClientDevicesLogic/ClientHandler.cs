@@ -12,11 +12,11 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 {
     public class ClientHandler
     {
-        
+        private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static ClientHandler instance = new ClientHandler();
         private TcpChannel tcpChannel;
-        private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        
+        private Dictionary<string, List<DeviceInfo>> userData = new Dictionary<string, List<DeviceInfo>>();
+
         private ClientHandler() { }
         
         public static ClientHandler GetInstance()
@@ -62,6 +62,18 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             sb.Append(":").Append(Settings.GetInstance().GetProperty("commserver.port", "9998")).Append("/");
             sb.Append(Settings.GetInstance().GetProperty("commserver.name", "CommServer"));
             return sb.ToString();
+        }
+
+        public void AddUser(string userName, List<DeviceInfo> userDevices)
+        {
+            if (this.userData.ContainsKey(userName))
+            {
+                throw new Exception("El usuario ya existe");
+            }
+            else
+            {
+                this.userData.Add(userName, userDevices);
+            }
         }
 
     }
