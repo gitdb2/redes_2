@@ -52,6 +52,10 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             {
                 log.Error("Error cerrando la conexion al servidor de comunicaciones", ex);
             }
+            finally 
+            {
+                this.tcpChannel = null;
+            }
         }
 
         private string GetCommServerConnectionString()
