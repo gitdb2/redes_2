@@ -76,5 +76,27 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             }
         }
 
+        public Dictionary<string, List<DeviceInfo>> GetUsers()
+        {
+            Dictionary<string, List<DeviceInfo>> copy = new Dictionary<string, List<DeviceInfo>>();
+            foreach (KeyValuePair<string, List<DeviceInfo>> pair in this.userData)
+            {
+                copy.Add(pair.Key, pair.Value);
+            }
+            return copy;
+        }
+
+        public void DeleteUser(string userName)
+        {
+            if (this.userData.ContainsKey(userName))
+            {
+                this.userData.Remove(userName);
+            }
+            else 
+            {
+                throw new Exception("El usuario no existe");
+            }
+        }
+
     }
 }

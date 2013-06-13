@@ -61,6 +61,7 @@
             this.btnDeleteClient.TabIndex = 9;
             this.btnDeleteClient.Text = "Dar de Baja";
             this.btnDeleteClient.UseVisualStyleBackColor = true;
+            this.btnDeleteClient.Click += new System.EventHandler(this.btnDeleteClient_Click);
             // 
             // btnClose
             // 
@@ -70,6 +71,7 @@
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // lblSelectClient
             // 
@@ -87,8 +89,9 @@
             this.comboBoxAllClients.Name = "comboBoxAllClients";
             this.comboBoxAllClients.Size = new System.Drawing.Size(165, 21);
             this.comboBoxAllClients.TabIndex = 12;
+            this.comboBoxAllClients.SelectedIndexChanged += new System.EventHandler(this.comboBoxAllClients_SelectedIndexChanged);
             // 
-            // AddClient
+            // DeletClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,7 +104,7 @@
             this.Controls.Add(this.lblDevices);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "AddClient";
+            this.Name = "DeletClient";
             this.Text = "Modificar Cliente";
             this.ResumeLayout(false);
             this.PerformLayout();

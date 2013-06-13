@@ -57,12 +57,14 @@
     <Compile Include="AddClient.Designer.cs">
       <DependentUpon>AddClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComboItem.cs" />
     <Compile Include="DeleteClient.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DeleteClient.Designer.cs">
       <DependentUpon>DeleteClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUtils.cs" />
     <Compile Include="ModifyClient.cs">
       <SubType>Form</SubType>
     </Compile>
