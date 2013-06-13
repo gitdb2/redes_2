@@ -13,5 +13,13 @@ namespace uy.edu.ort.obligatorio.Commons
 
         public DeviceStatusInfo LastStatusInfo { get; set; }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Id: ").Append(LastStatusInfo.DeviceId);
+            sb.Append(", Estado: ").Append(LastStatusInfo.StatusOnOff ? "On" : "Off");
+            return sb.ToString();
+        }
+
     }
 }

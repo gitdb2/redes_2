@@ -90,6 +90,7 @@
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "Agregar";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnRemove
             // 
@@ -99,6 +100,7 @@
             this.btnRemove.TabIndex = 6;
             this.btnRemove.Text = "Quitar";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnAddAll
             // 
@@ -108,6 +110,7 @@
             this.btnAddAll.TabIndex = 7;
             this.btnAddAll.Text = "Agregar Todos";
             this.btnAddAll.UseVisualStyleBackColor = true;
+            this.btnAddAll.Click += new System.EventHandler(this.btnAddAll_Click);
             // 
             // btnRemoveAll
             // 
@@ -117,6 +120,7 @@
             this.btnRemoveAll.TabIndex = 8;
             this.btnRemoveAll.Text = "Quitar Todos";
             this.btnRemoveAll.UseVisualStyleBackColor = true;
+            this.btnRemoveAll.Click += new System.EventHandler(this.btnRemoveAll_Click);
             // 
             // btnClose
             // 
@@ -126,6 +130,7 @@
             this.btnClose.TabIndex = 10;
             this.btnClose.Text = "Cerrar";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnAccept
             // 
