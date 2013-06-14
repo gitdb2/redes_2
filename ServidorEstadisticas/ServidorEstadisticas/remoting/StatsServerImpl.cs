@@ -19,7 +19,7 @@ namespace ort.edu.uy.obligatorio2.ServidorEstadisticas.remoting
             return SingletonStatsHistory.GetInstance().GetDeviceFaults(idDevice);
         }
 
-        public List<DeviceStatusInfo>  GetDeviceStatus(string idDevice, int resultMaxSize)
+        public List<DeviceStatusInfo>  GetDeviceStatuses(string idDevice, int resultMaxSize)
         {
             return SingletonStatsHistory.GetInstance().GetDeviceStatus(idDevice);
         }
