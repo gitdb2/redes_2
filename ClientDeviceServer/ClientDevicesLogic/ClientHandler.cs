@@ -48,7 +48,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             StringBuilder sb = new StringBuilder();
             sb.Append("tcp://");
             sb.Append(Settings.GetInstance().GetProperty("statsserver.ip", "localhost"));
-            sb.Append(":").Append(Settings.GetInstance().GetProperty("statsserver.port", "9998")).Append("/");
+            sb.Append(":").Append(Settings.GetInstance().GetProperty("statsserver.port", "9997")).Append("/");
             sb.Append(Settings.GetInstance().GetProperty("statsserver.name", "StatsServer"));
             return sb.ToString();
         }
