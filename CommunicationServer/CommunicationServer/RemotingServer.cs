@@ -17,10 +17,10 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
         public void StartRemotingServer()
         {
             log.Info("Remoting Server started");
-            TcpChannel tcpChannel = new TcpChannel(int.Parse(Settings.GetInstance().GetProperty("commserver.port", "9998")));
+            TcpChannel tcpChannel = new TcpChannel(int.Parse(Settings.GetInstance().GetProperty("remoting.commserver.port", "9998")));
             ChannelServices.RegisterChannel(tcpChannel, false);
             Type commonInterfaceType = typeof(ICommServerImpl);
-            RemotingConfiguration.RegisterWellKnownServiceType(commonInterfaceType, Settings.GetInstance().GetProperty("commserver.name", "CommServer"), WellKnownObjectMode.SingleCall);
+            RemotingConfiguration.RegisterWellKnownServiceType(commonInterfaceType, Settings.GetInstance().GetProperty("remoting.commserver.name", "CommServer"), WellKnownObjectMode.SingleCall);
         }
 
     }
