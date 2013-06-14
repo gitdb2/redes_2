@@ -1,4 +1,4 @@
-﻿namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
+﻿namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
 {
     partial class DeviceLog
     {
