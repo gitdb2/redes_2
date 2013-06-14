@@ -20,6 +20,11 @@ namespace ort.edu.uy.obligatorio2.ServidorEstadisticas.remoting
             if (ret.Count > 0)
             {
                 ret.Reverse();
+
+                if (ret.Count < resultMaxSize)
+                {
+                    resultMaxSize = ret.Count;
+                }
                 ret = ret.GetRange(0, resultMaxSize);
             }
             return ret;
@@ -31,6 +36,10 @@ namespace ort.edu.uy.obligatorio2.ServidorEstadisticas.remoting
            if (ret.Count > 0)
            {
                ret.Reverse();
+               if (ret.Count < resultMaxSize)
+               {
+                   resultMaxSize = ret.Count;
+               }
                ret =  ret.GetRange(0, resultMaxSize);
            }
            return ret;
