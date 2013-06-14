@@ -59,6 +59,7 @@
     <Compile Include="ICommServer.cs" />
     <Compile Include="queue\MessageBean.cs" />
     <Compile Include="ServerInfo.cs" />
+    <Compile Include="statsInterface\IStatsServer.cs" />
     <Compile Include="StringUtils.cs" />
     <Compile Include="UtilContactList.cs" />
   </ItemGroup>

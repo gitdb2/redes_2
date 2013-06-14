@@ -7,6 +7,7 @@ using System.IO;
 using System.Reflection;
 using Comunicacion;
 using ServidorEstadisticas.queue;
+using ort.edu.uy.obligatorio2.ServidorEstadisticas.remoting;
 
 namespace uy.edu.ort.obligatorio2.ServidorEstadisticas
 {
@@ -14,7 +15,7 @@ namespace uy.edu.ort.obligatorio2.ServidorEstadisticas
     {
         private ILog log;
         public bool running = true;
-      
+        private RemotingServer remotingServer;
 
         static void Main(string[] args)
         {
@@ -50,10 +51,17 @@ namespace uy.edu.ort.obligatorio2.ServidorEstadisticas
         {
             QueueHandler.GetInstance();//configura la cola
 
+
+
+
             //iniciar servidor de de remoting
         }
 
 
-      
+        private void StartRemotingServer()
+        {
+            this.remotingServer = new RemotingServer();
+            remotingServer.StartRemotingServer();
+        }
     }
 }
