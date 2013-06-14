@@ -5,9 +5,12 @@ using System.Text;
 
 namespace uy.edu.ort.obligatorio.Commons.statsInterface
 {
-    interface IStatsServer
+    public interface IStatsServer
     {
+        
         public List<DeviceFailureInfo> GetDeviceFaults(string idDevice, int resultMaxSize);
-        public List<DeviceStatusInfo> GetDeviceFaults(string idDevice, int resultMaxSize);
+
+        public List<DeviceStatusInfo> GetDeviceStatuses(string idDevice, int resultMaxSize);
+
     }
 }

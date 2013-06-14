@@ -7,6 +7,7 @@ using System.Runtime.Remoting.Channels;
 using uy.edu.ort.obligatorio.Commons;
 using Comunicacion;
 using log4net;
+using uy.edu.ort.obligatorio.Commons.statsInterface;
 
 namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 {
@@ -14,7 +15,8 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
     {
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static ClientHandler instance = new ClientHandler();
-        private TcpChannel tcpChannel;
+        private TcpChannel commServerTcpChannel;
+        private TcpChannel statsServerTcpChannel;
         private Dictionary<string, List<DeviceInfo>> userData = new Dictionary<string, List<DeviceInfo>>();
 
         private ClientHandler() { }
@@ -28,33 +30,52 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
         {
             ICommServer iCommServer = ConnectToCommServer();
             List<DeviceInfo> devices = iCommServer.GetDevices();
-            DisconnectFromCommServer();
+            DisconnectFromRemotingServer(this.commServerTcpChannel);
             return devices;
+        }
+
+        private IStatsServer ConnectToStatsServer()
+        {
+            log.Info("Estableciendo la conexion al servidor de estadisticas");
+            this.statsServerTcpChannel = new TcpChannel();
+            ChannelServices.RegisterChannel(statsServerTcpChannel, false);
+            Type requiredType = typeof(IStatsServer);
+            return (IStatsServer)Activator.GetObject(requiredType, GetStatsServerConnectionString());
+        }
+
+        private string GetStatsServerConnectionString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("tcp://");
+            sb.Append(Settings.GetInstance().GetProperty("statsserver.ip", "localhost"));
+            sb.Append(":").Append(Settings.GetInstance().GetProperty("statsserver.port", "9998")).Append("/");
+            sb.Append(Settings.GetInstance().GetProperty("statsserver.name", "StatsServer"));
+            return sb.ToString();
         }
 
         private ICommServer ConnectToCommServer()
         {
             log.Info("Estableciendo la conexion al servidor de comunicaciones");
-            this.tcpChannel = new TcpChannel();
-            ChannelServices.RegisterChannel(tcpChannel, false);
+            this.commServerTcpChannel = new TcpChannel();
+            ChannelServices.RegisterChannel(commServerTcpChannel, false);
             Type requiredType = typeof(ICommServer);
             return (ICommServer) Activator.GetObject(requiredType, GetCommServerConnectionString());
         }
 
-        private void DisconnectFromCommServer()
+        private void DisconnectFromRemotingServer(TcpChannel tcpChannel)
         {
             try
             {
-                log.Info("Cerrando la conexion al servidor de comunicaciones");
-                ChannelServices.UnregisterChannel(this.tcpChannel);
+                log.Info("Cerrando la conexion al servidor de remoting");
+                ChannelServices.UnregisterChannel(tcpChannel);
             }
             catch (Exception ex)
             {
-                log.Error("Error cerrando la conexion al servidor de comunicaciones", ex);
+                log.Error("Error cerrando la conexion al servidor de remoting", ex);
             }
             finally 
             {
-                this.tcpChannel = null;
+                tcpChannel = null;
             }
         }
 
@@ -112,6 +133,24 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             {
                 this.userData[userName] = userNewDevices;                
             }
+        }
+
+        public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId)
+        {
+            IStatsServer iStatsServer = ConnectToStatsServer();
+            int maxResults = int.Parse(Settings.GetInstance().GetProperty("commserver.statuses.maxresults", "100"));
+            List<DeviceStatusInfo> statuses = iStatsServer.GetDeviceStatuses(deviceId, maxResults);
+            DisconnectFromRemotingServer(this.statsServerTcpChannel);
+            return statuses;
+        }
+
+        public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId)
+        {
+            IStatsServer iStatsServer = ConnectToStatsServer();
+            int maxResults = int.Parse(Settings.GetInstance().GetProperty("commserver.failures.maxresults", "100"));
+            List<DeviceFailureInfo> failures = iStatsServer.GetDeviceFaults(deviceId, maxResults);
+            DisconnectFromRemotingServer(this.statsServerTcpChannel);
+            return failures;
         }
 
     }
