@@ -40,5 +40,11 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
             ModifiyClient modifyClient = new ModifiyClient();
             modifyClient.ShowDialog();
         }
+
+        private void verToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ClientDevicesInfo cdi = new ClientDevicesInfo();
+            cdi.ShowDialog();
+        }
     }
 }

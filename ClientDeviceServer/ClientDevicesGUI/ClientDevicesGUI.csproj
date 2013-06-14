@@ -57,12 +57,24 @@
     <Compile Include="AddClient.Designer.cs">
       <DependentUpon>AddClient.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientDevicesInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientDevicesInfo.Designer.cs">
+      <DependentUpon>ClientDevicesInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComboItem.cs" />
     <Compile Include="DeleteClient.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DeleteClient.Designer.cs">
       <DependentUpon>DeleteClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceLog.Designer.cs">
+      <DependentUpon>DeviceLog.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUtils.cs" />
     <Compile Include="ModifyClient.cs">
@@ -82,8 +94,14 @@
     <EmbeddedResource Include="AddClient.resx">
       <DependentUpon>AddClient.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientDevicesInfo.resx">
+      <DependentUpon>ClientDevicesInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DeleteClient.resx">
       <DependentUpon>DeleteClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceLog.resx">
+      <DependentUpon>DeviceLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModifyClient.resx">
       <DependentUpon>ModifyClient.cs</DependentUpon>
