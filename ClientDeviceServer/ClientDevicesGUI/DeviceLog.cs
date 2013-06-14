@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using uy.edu.ort.obligatorio.Commons;
 
 namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
 {
@@ -25,5 +26,11 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
         {
             
         }
+
+        public void LoadLogLines(List<DeviceStatusInfo> statuses)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

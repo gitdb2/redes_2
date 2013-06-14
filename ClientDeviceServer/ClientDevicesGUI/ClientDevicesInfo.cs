@@ -79,8 +79,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
         {
             DeviceLog dl = new DeviceLog();
             dl.Text = "Estados del Dispositivo " + this.deviceSelected.LastStatusInfo.DeviceId;
-            //ClientHandler.GetStatus(deviceID);
-            dl.LoadLogLines();
+            dl.LoadLogLines(ClientHandler.GetDeviceStatusList(deviceSelected.LastStatusInfo.DeviceId));
             dl.Show();
         }
 

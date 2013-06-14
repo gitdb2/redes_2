@@ -8,6 +8,7 @@ namespace uy.edu.ort.obligatorio.Commons.statsInterface
     public interface IStatsServer
     {
         List<DeviceFailureInfo> GetDeviceFaults(string idDevice, int resultMaxSize);
-        List<DeviceStatusInfo> GetDeviceStatus(string idDevice, int resultMaxSize);
+        List<DeviceStatusInfo> GetDeviceStatuses(string idDevice, int resultMaxSize);
+        
     }
 }
