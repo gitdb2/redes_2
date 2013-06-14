@@ -88,7 +88,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
             DeviceLog dl = new DeviceLog();
             dl.Text = "Fallas del Dispositivo " + this.deviceSelected.LastStatusInfo.DeviceId;
             dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceFailuresList(deviceSelected.LastStatusInfo.DeviceId));
-            dl.LoadLogLines();
             dl.Show();
         }
 

@@ -14,8 +14,8 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceLogic
         public bool IsTurnedOn { get; set; }
         public bool IsConnected { get; set; }
 
-        private int portCommServer = int.Parse(Settings.GetInstance().GetProperty("commserver.port", "2000"));
-        private string ipCommServer = Settings.GetInstance().GetProperty("commserver.ip", "127.0.0.1");
+        private int portCommServer = int.Parse(Settings.GetInstance().GetProperty("remoting.commserver.port", "2000"));
+        private string ipCommServer = Settings.GetInstance().GetProperty("remoting.commserver.ip", "localhost");
         private Connection connection;
 
         public MonitoringDeviceHandler() 

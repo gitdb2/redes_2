@@ -68,8 +68,6 @@ namespace uy.edu.ort.obligatorio.Commons
             (threadRead = new Thread(new ThreadStart(SetupConn))).Start();
         }
 
-      
-
         public void WriteToStream(char[] data)
         {
             semWrite.WaitOne();

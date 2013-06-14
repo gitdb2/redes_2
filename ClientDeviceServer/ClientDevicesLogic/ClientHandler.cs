@@ -47,9 +47,9 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("tcp://");
-            sb.Append(Settings.GetInstance().GetProperty("statsserver.ip", "localhost"));
-            sb.Append(":").Append(Settings.GetInstance().GetProperty("statsserver.port", "9997")).Append("/");
-            sb.Append(Settings.GetInstance().GetProperty("statsserver.name", "StatsServer"));
+            sb.Append(Settings.GetInstance().GetProperty("remoting.statsserver.ip", "localhost"));
+            sb.Append(":").Append(Settings.GetInstance().GetProperty("remoting.statsserver.port", "9997")).Append("/");
+            sb.Append(Settings.GetInstance().GetProperty("remoting.statsserver.name", "StatsServer"));
             return sb.ToString();
         }
 
@@ -83,9 +83,9 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("tcp://");
-            sb.Append(Settings.GetInstance().GetProperty("commserver.ip", "localhost"));
-            sb.Append(":").Append(Settings.GetInstance().GetProperty("commserver.port", "9998")).Append("/");
-            sb.Append(Settings.GetInstance().GetProperty("commserver.name", "CommServer"));
+            sb.Append(Settings.GetInstance().GetProperty("remoting.commserver.ip", "localhost"));
+            sb.Append(":").Append(Settings.GetInstance().GetProperty("remoting.commserver.port", "9998")).Append("/");
+            sb.Append(Settings.GetInstance().GetProperty("remoting.commserver.name", "CommServer"));
             return sb.ToString();
         }
 
