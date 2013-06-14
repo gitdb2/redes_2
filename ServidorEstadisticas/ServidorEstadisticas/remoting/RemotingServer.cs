@@ -21,7 +21,7 @@ namespace ort.edu.uy.obligatorio2.ServidorEstadisticas.remoting
             TcpChannel tcpChannel = new TcpChannel(int.Parse(Settings.GetInstance().GetProperty("statsserver.port", "9997")));
            
             ChannelServices.RegisterChannel(tcpChannel, false);
-            Type commonInterfaceType = typeof(IStatsServer);
+            Type commonInterfaceType = typeof(StatsServerImpl);
             RemotingConfiguration.RegisterWellKnownServiceType(
                                     commonInterfaceType, 
                                     Settings.GetInstance().GetProperty("statsserver.name", "StatsServer"), 
