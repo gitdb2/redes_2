@@ -50,7 +50,7 @@ namespace uy.edu.ort.obligatorio2.ServidorEstadisticas
         private void SetUpServices()
         {
             QueueHandler.GetInstance();//configura la cola
-
+            StartRemotingServer();
 
 
 

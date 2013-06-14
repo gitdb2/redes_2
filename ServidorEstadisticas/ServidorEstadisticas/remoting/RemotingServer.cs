@@ -17,14 +17,16 @@ namespace ort.edu.uy.obligatorio2.ServidorEstadisticas.remoting
 
         public void StartRemotingServer()
         {
-            log.Info("Remoting Server started");
+            
             TcpChannel tcpChannel = new TcpChannel(int.Parse(Settings.GetInstance().GetProperty("statsserver.port", "9997")));
+           
             ChannelServices.RegisterChannel(tcpChannel, false);
             Type commonInterfaceType = typeof(IStatsServer);
             RemotingConfiguration.RegisterWellKnownServiceType(
                                     commonInterfaceType, 
                                     Settings.GetInstance().GetProperty("statsserver.name", "StatsServer"), 
                                     WellKnownObjectMode.SingleCall);
+            log.Info("Remoting Server ("+(Settings.GetInstance().GetProperty("statsserver.name", "StatsServer"))+")  started in port: " + Settings.GetInstance().GetProperty("statsserver.port", "9997"));
         }
 
     }
