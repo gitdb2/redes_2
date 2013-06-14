@@ -12,6 +12,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
 {
     public partial class DeviceLog : Form
     {
+
         public DeviceLog()
         {
             InitializeComponent();
@@ -22,14 +23,17 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
             this.Dispose();
         }
 
-        public void LoadLogLines()
-        {
-            
-        }
-
         public void LoadLogLines(List<DeviceStatusInfo> statuses)
         {
-            throw new NotImplementedException();
+            this.listBoxDeviceLog.Items.Clear();
+            this.listBoxDeviceLog.Items.AddRange(statuses.ToArray());
+        }
+
+
+        public void LoadLogLines(List<DeviceFailureInfo> failures)
+        {
+            this.listBoxDeviceLog.Items.Clear();
+            this.listBoxDeviceLog.Items.AddRange(failures.ToArray());
         }
 
     }

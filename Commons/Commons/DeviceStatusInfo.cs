@@ -13,5 +13,14 @@ namespace uy.edu.ort.obligatorio.Commons
         public bool StatusOnOff { get; set; }
         public long UpTime { get; set; }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Id: ").Append(DeviceId);
+            sb.Append(", ").Append("Estado: ").Append(StatusOnOff ? "On" : "Off");
+            sb.Append(", ").Append("Uptimer: ").Append(UpTime);
+            return sb.ToString();
+        }
+
     }
 }
