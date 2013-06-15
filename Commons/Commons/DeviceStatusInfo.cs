@@ -22,7 +22,7 @@ namespace uy.edu.ort.obligatorio.Commons
             StringBuilder sb = new StringBuilder();
             sb.Append("Id: ").Append(DeviceId);
             sb.Append(", ").Append("Estado: ").Append(StatusOnOff ? "On" : "Off");
-            sb.Append(", ").Append("Uptimer: ").Append(UpTime);
+            sb.Append(", ").Append("Uptime: ").Append(UpTime);
             return sb.ToString();
         }
 
