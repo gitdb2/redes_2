@@ -60,7 +60,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
            // uri = Settings.GetInstance().GetProperty("webservice.url", "http://localhost:8080/clientDevicesService");
         }
 
-
         public void Stop()
         {
             stopService = true;

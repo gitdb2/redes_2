@@ -12,8 +12,10 @@ namespace uy.edu.ort.obligatorio.Commons
     {
         [DataMember]
         public string DeviceId { get; set; }
+        
         [DataMember]
         public bool StatusOnOff { get; set; }
+        
         [DataMember]
         public long UpTime { get; set; }
 

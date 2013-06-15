@@ -22,11 +22,18 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
 
         private void LoadUsers()
         {
-            this.comboBoxAllClients.Items.Clear();
-            Dictionary<string, List<DeviceInfo>> users = ClientHandler.GetInstance().GetUsers();
-            foreach (KeyValuePair<string, List<DeviceInfo>> item in users)
+            try
             {
-                this.comboBoxAllClients.Items.Add(new ComboItem() { UserName = item.Key, Devices = item.Value });
+                this.comboBoxAllClients.Items.Clear();
+                Dictionary<string, List<DeviceInfo>> users = ClientHandler.GetInstance().GetUsers();
+                foreach (KeyValuePair<string, List<DeviceInfo>> item in users)
+                {
+                    this.comboBoxAllClients.Items.Add(new ComboItem() { UserName = item.Key, Devices = item.Value });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

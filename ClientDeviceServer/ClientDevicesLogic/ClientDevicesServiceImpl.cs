@@ -14,9 +14,10 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 {
     public class ClientDevicesServiceImpl : IClientDevicesService
     {
+
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-       public List<DeviceInfo> GetDevicesForClient(string idClient)
+        public List<DeviceInfo> GetDevicesForClient(string idClient)
         {
             log.InfoFormat("GetDevicesForClient({0})",idClient); 
             return ClientHandler.GetInstance().GetUserDevices(idClient);
@@ -38,5 +39,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
         {
             return "Echo: " + text;
         }
+
     }
 }

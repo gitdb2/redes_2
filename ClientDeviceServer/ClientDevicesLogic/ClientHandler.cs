@@ -13,6 +13,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 {
     public class ClientHandler
     {
+
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static ClientHandler instance = new ClientHandler();
         private TcpChannel commServerTcpChannel;
@@ -26,14 +27,19 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             return instance;
         }
 
-
-
         public List<DeviceInfo> GetDevices()
         {
-            ICommServer iCommServer = ConnectToCommServer();
-            List<DeviceInfo> devices = iCommServer.GetDevices();
-            DisconnectFromRemotingServer(this.commServerTcpChannel);
-            return devices;
+            try
+            {
+                ICommServer iCommServer = ConnectToCommServer();
+                List<DeviceInfo> devices = iCommServer.GetDevices();
+                DisconnectFromRemotingServer(this.commServerTcpChannel);
+                return devices;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocurrio un error al obtener los Dispositivos");
+            }
         }
 
         private IStatsServer ConnectToStatsServer()
@@ -104,7 +110,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
                     this.userData.Add(userName, userDevices);
                 }
             }
-
         }
 
         public Dictionary<string, List<DeviceInfo>> GetUsers()
@@ -119,7 +124,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             }
             return copy;
         }
-
 
         public List<DeviceInfo> GetUserDevices(string idUser)
         {
@@ -209,7 +213,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             DisconnectFromRemotingServer(this.statsServerTcpChannel);
             return failures;
         }
-
 
     }
 }
