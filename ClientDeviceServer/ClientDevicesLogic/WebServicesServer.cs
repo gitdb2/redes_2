@@ -105,7 +105,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
                     log.InfoFormat("The service is ready at {0}", baseAddress);
                     while (!stopService)
                     {
-                        log.Debug("duerme thread");
+                       // log.Debug("duerme thread");
                         Thread.Sleep(2000);
                     }
                   
