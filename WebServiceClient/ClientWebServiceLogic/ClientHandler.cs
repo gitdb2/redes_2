@@ -61,7 +61,15 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             }
             try
             {
-                result = this.webServiceProvider.GetDevicesForClient(clientId).Cast<DeviceInfo>().ToList();
+                DeviceInfoWrapper resultWrapper = this.webServiceProvider.GetDevicesForClient(clientId);
+                if (resultWrapper.Error)
+                {
+                    throw new Exception("Ocurrio un error al obtener los Dispositivos");
+                }
+                else
+                {
+                    result = resultWrapper.List.Cast<DeviceInfo>().ToList();
+                }
             }
             catch (Exception)
             {
@@ -87,7 +95,15 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             }
             try
             {
-                result = this.webServiceProvider.GetDeviceFaults(deviceId, maxResults).Cast<DeviceFailureInfo>().ToList();
+                DeviceFailureInfoWrapper resultWrapper = this.webServiceProvider.GetDeviceFaults(deviceId, maxResults);
+                if (resultWrapper.Error)
+                {
+                    throw new Exception("Ocurrio un error al obtener la lista de Fallas");
+                }
+                else 
+                {
+                    result = resultWrapper.List.Cast<DeviceFailureInfo>().ToList();
+                }
             }
             catch (Exception)
             {
@@ -113,7 +129,15 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             }
             try
             {
-                result = this.webServiceProvider.GetDeviceStatuses(deviceId, maxResults).Cast<DeviceStatusInfo>().ToList();
+                DeviceStatusInfoWrapper resultWrapper = this.webServiceProvider.GetDeviceStatuses(deviceId, maxResults);
+                if (resultWrapper.Error)
+                {
+                    throw new Exception("Ocurrio un error al obtener la lista de Estados");
+                }
+                else 
+                {
+                    result = resultWrapper.List.Cast<DeviceStatusInfo>().ToList();
+                }
             }
             catch (Exception)
             {

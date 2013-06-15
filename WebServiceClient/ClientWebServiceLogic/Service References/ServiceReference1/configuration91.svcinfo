@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="gGAagJDUC+x2kkt9+0nC6jzOzsA=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="XYHGOW7mqWxPj7nfdpkmdimvoEs=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IClientDevicesService">
       <properties>
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IClientDevicesService" contract="ServiceReference1.IClientDevicesService" bindingType="basicHttpBinding" address="http://192.168.0.201:8080/clientDevicesService" bindingConfiguration="BasicHttpBinding_IClientDevicesService">
+    <endpoint name="BasicHttpBinding_IClientDevicesService" contract="ServiceReference1.IClientDevicesService" bindingType="basicHttpBinding" address="http://192.168.0.242:8080/clientDevicesService" bindingConfiguration="BasicHttpBinding_IClientDevicesService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://192.168.0.201:8080/clientDevicesService</serializedValue>
+          <serializedValue>http://192.168.0.242:8080/clientDevicesService</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

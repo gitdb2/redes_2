@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="DeviceInfoWrapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfDeviceInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeviceInfoWrapper" nillable="true" type="tns:DeviceInfoWrapper" />
   <xs:complexType name="ArrayOfDeviceInfo">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DeviceInfo" nillable="true" type="tns:DeviceInfo" />
@@ -30,12 +38,28 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DeviceStatusInfo" nillable="true" type="tns:DeviceStatusInfo" />
+  <xs:complexType name="DeviceFailureInfoWrapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfDeviceFailureInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeviceFailureInfoWrapper" nillable="true" type="tns:DeviceFailureInfoWrapper" />
   <xs:complexType name="ArrayOfDeviceFailureInfo">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DeviceFailureInfo" nillable="true" type="tns:DeviceFailureInfo" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfDeviceFailureInfo" nillable="true" type="tns:ArrayOfDeviceFailureInfo" />
+  <xs:complexType name="DeviceStatusInfoWrapper">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Error" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="List" nillable="true" type="tns:ArrayOfDeviceStatusInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DeviceStatusInfoWrapper" nillable="true" type="tns:DeviceStatusInfoWrapper" />
   <xs:complexType name="ArrayOfDeviceStatusInfo">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="DeviceStatusInfo" nillable="true" type="tns:DeviceStatusInfo" />

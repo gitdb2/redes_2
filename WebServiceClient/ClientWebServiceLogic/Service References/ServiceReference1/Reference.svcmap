@@ -18,14 +18,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.0.201:8080/clientDevicesService" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.0.242:8080/clientDevicesService" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="clientDevicesService.xsd" MetadataType="Schema" ID="7d329ba0-2002-4826-a63a-366dc655fddc" SourceId="1" SourceUrl="http://192.168.0.201:8080/clientDevicesService?xsd=xsd1" />
-    <MetadataFile FileName="clientDevicesService1.xsd" MetadataType="Schema" ID="f347c4c4-eab9-4795-9dcb-06941540c19e" SourceId="1" SourceUrl="http://192.168.0.201:8080/clientDevicesService?xsd=xsd0" />
-    <MetadataFile FileName="clientDevicesService2.xsd" MetadataType="Schema" ID="de5c957f-b200-4553-902b-8598da988bc9" SourceId="1" SourceUrl="http://192.168.0.201:8080/clientDevicesService?xsd=xsd2" />
-    <MetadataFile FileName="ClientDevicesServiceImpl.wsdl" MetadataType="Wsdl" ID="727bf1f1-0ad7-484f-aa38-6e4e27aff351" SourceId="1" SourceUrl="http://192.168.0.201:8080/clientDevicesService?wsdl" />
-    <MetadataFile FileName="clientDevicesService.disco" MetadataType="Disco" ID="79071e8f-db21-4853-9fa1-8dc2e256ec1c" SourceId="1" SourceUrl="http://192.168.0.201:8080/clientDevicesService?disco" />
+    <MetadataFile FileName="clientDevicesService1.disco" MetadataType="Disco" ID="7f1c4945-b2ba-45f2-a339-a7751478cbde" SourceId="1" SourceUrl="http://192.168.0.242:8080/clientDevicesService?disco" />
+    <MetadataFile FileName="clientDevicesService3.xsd" MetadataType="Schema" ID="73b393f3-2873-4238-ba5b-b5a9679de238" SourceId="1" SourceUrl="http://192.168.0.242:8080/clientDevicesService?xsd=xsd0" />
+    <MetadataFile FileName="ClientDevicesServiceImpl1.wsdl" MetadataType="Wsdl" ID="aa0ba56f-bec9-478d-8dd1-e208261ca426" SourceId="1" SourceUrl="http://192.168.0.242:8080/clientDevicesService?wsdl" />
+    <MetadataFile FileName="clientDevicesService31.xsd" MetadataType="Schema" ID="d105d874-56ad-4571-88bb-b5c0d75539f8" SourceId="1" SourceUrl="http://192.168.0.242:8080/clientDevicesService?xsd=xsd2" />
+    <MetadataFile FileName="clientDevicesService32.xsd" MetadataType="Schema" ID="3392a7cb-96a4-4b70-aa3b-f986e9ef651e" SourceId="1" SourceUrl="http://192.168.0.242:8080/clientDevicesService?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

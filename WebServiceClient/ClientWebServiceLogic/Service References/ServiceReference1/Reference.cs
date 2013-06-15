@@ -15,6 +15,83 @@ namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DeviceInfoWrapper", Namespace="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons")]
+    [System.SerializableAttribute()]
+    public partial class DeviceInfoWrapper : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ErrorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceInfo[] ListField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Error {
+            get {
+                return this.ErrorField;
+            }
+            set {
+                if ((this.ErrorField.Equals(value) != true)) {
+                    this.ErrorField = value;
+                    this.RaisePropertyChanged("Error");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorMessage {
+            get {
+                return this.ErrorMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorMessageField, value) != true)) {
+                    this.ErrorMessageField = value;
+                    this.RaisePropertyChanged("ErrorMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceInfo[] List {
+            get {
+                return this.ListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListField, value) != true)) {
+                    this.ListField = value;
+                    this.RaisePropertyChanged("List");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="DeviceInfo", Namespace="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons")]
     [System.SerializableAttribute()]
     public partial class DeviceInfo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -244,6 +321,160 @@ namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DeviceFailureInfoWrapper", Namespace="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons")]
+    [System.SerializableAttribute()]
+    public partial class DeviceFailureInfoWrapper : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ErrorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfo[] ListField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Error {
+            get {
+                return this.ErrorField;
+            }
+            set {
+                if ((this.ErrorField.Equals(value) != true)) {
+                    this.ErrorField = value;
+                    this.RaisePropertyChanged("Error");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorMessage {
+            get {
+                return this.ErrorMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorMessageField, value) != true)) {
+                    this.ErrorMessageField = value;
+                    this.RaisePropertyChanged("ErrorMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfo[] List {
+            get {
+                return this.ListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListField, value) != true)) {
+                    this.ListField = value;
+                    this.RaisePropertyChanged("List");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DeviceStatusInfoWrapper", Namespace="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons")]
+    [System.SerializableAttribute()]
+    public partial class DeviceStatusInfoWrapper : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ErrorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorMessageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfo[] ListField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Error {
+            get {
+                return this.ErrorField;
+            }
+            set {
+                if ((this.ErrorField.Equals(value) != true)) {
+                    this.ErrorField = value;
+                    this.RaisePropertyChanged("Error");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorMessage {
+            get {
+                return this.ErrorMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorMessageField, value) != true)) {
+                    this.ErrorMessageField = value;
+                    this.RaisePropertyChanged("ErrorMessage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfo[] List {
+            get {
+                return this.ListField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListField, value) != true)) {
+                    this.ListField = value;
+                    this.RaisePropertyChanged("List");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IClientDevicesService")]
     public interface IClientDevicesService {
@@ -252,13 +483,13 @@ namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1 {
         string Echo(string text);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientDevicesService/GetDevicesForClient", ReplyAction="http://tempuri.org/IClientDevicesService/GetDevicesForClientResponse")]
-        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceInfo[] GetDevicesForClient(string idClient);
+        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceInfoWrapper GetDevicesForClient(string idClient);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientDevicesService/GetDeviceFaults", ReplyAction="http://tempuri.org/IClientDevicesService/GetDeviceFaultsResponse")]
-        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfo[] GetDeviceFaults(string idDevice, int resultMaxSize);
+        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfoWrapper GetDeviceFaults(string idDevice, int resultMaxSize);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientDevicesService/GetDeviceStatuses", ReplyAction="http://tempuri.org/IClientDevicesService/GetDeviceStatusesResponse")]
-        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfo[] GetDeviceStatuses(string idDevice, int resultMaxSize);
+        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfoWrapper GetDeviceStatuses(string idDevice, int resultMaxSize);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -292,15 +523,15 @@ namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1 {
             return base.Channel.Echo(text);
         }
         
-        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceInfo[] GetDevicesForClient(string idClient) {
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceInfoWrapper GetDevicesForClient(string idClient) {
             return base.Channel.GetDevicesForClient(idClient);
         }
         
-        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfo[] GetDeviceFaults(string idDevice, int resultMaxSize) {
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfoWrapper GetDeviceFaults(string idDevice, int resultMaxSize) {
             return base.Channel.GetDeviceFaults(idDevice, resultMaxSize);
         }
         
-        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfo[] GetDeviceStatuses(string idDevice, int resultMaxSize) {
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfoWrapper GetDeviceStatuses(string idDevice, int resultMaxSize) {
             return base.Channel.GetDeviceStatuses(idDevice, resultMaxSize);
         }
     }
