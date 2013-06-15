@@ -16,8 +16,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static ClientHandler instance = new ClientHandler();
-        private TcpChannel commServerTcpChannel;
-        private TcpChannel statsServerTcpChannel;
         private Dictionary<string, List<DeviceInfo>> userData = new Dictionary<string, List<DeviceInfo>>();
 
         private ClientHandler() { }
@@ -29,23 +27,26 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 
         public List<DeviceInfo> GetDevices()
         {
+            TcpChannel tcpChannel = new TcpChannel();
             try
             {
-                ICommServer iCommServer = ConnectToCommServer();
+                ICommServer iCommServer = ConnectToCommServer(tcpChannel);
                 List<DeviceInfo> devices = iCommServer.GetDevices();
-                DisconnectFromRemotingServer(this.commServerTcpChannel);
                 return devices;
             }
             catch (Exception)
             {
                 throw new Exception("Ocurrio un error al obtener los Dispositivos");
             }
+            finally
+            {
+                DisconnectFromRemotingServer(tcpChannel);
+            }
         }
 
-        private IStatsServer ConnectToStatsServer()
+        private IStatsServer ConnectToStatsServer(TcpChannel statsServerTcpChannel)
         {
             log.Info("Estableciendo la conexion al servidor de estadisticas");
-            this.statsServerTcpChannel = new TcpChannel();
             ChannelServices.RegisterChannel(statsServerTcpChannel, false);
             Type requiredType = typeof(IStatsServer);
             return (IStatsServer)Activator.GetObject(requiredType, GetStatsServerConnectionString());
@@ -61,10 +62,10 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             return sb.ToString();
         }
 
-        private ICommServer ConnectToCommServer()
+        private ICommServer ConnectToCommServer(TcpChannel commServerTcpChannel)
         {
             log.Info("Estableciendo la conexion al servidor de comunicaciones");
-            this.commServerTcpChannel = new TcpChannel();
+            
             ChannelServices.RegisterChannel(commServerTcpChannel, false);
             Type requiredType = typeof(ICommServer);
             return (ICommServer)Activator.GetObject(requiredType, GetCommServerConnectionString());
@@ -80,10 +81,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             catch (Exception ex)
             {
                 log.Error("Error cerrando la conexion al servidor de remoting", ex);
-            }
-            finally
-            {
-                tcpChannel = null;
             }
         }
 
@@ -187,16 +184,20 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
         /// <returns></returns>
         public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId, int maxResults)
         {
+            TcpChannel tcpChannel = new TcpChannel();
             try
             {
-                IStatsServer iStatsServer = ConnectToStatsServer();
+                IStatsServer iStatsServer = ConnectToStatsServer(tcpChannel);
                 List<DeviceStatusInfo> statuses = iStatsServer.GetDeviceStatuses(deviceId, maxResults);
-                DisconnectFromRemotingServer(this.statsServerTcpChannel);
                 return statuses;
             }
             catch (Exception)
             {
                 throw new Exception("Error al obtener los Estados del Dispositivo");
+            }
+            finally
+            {
+                DisconnectFromRemotingServer(tcpChannel);
             }
         }
 
@@ -214,16 +215,20 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
         /// <returns></returns>
         public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId, int maxResults)
         {
+            TcpChannel tcpChannel = new TcpChannel();
             try
             {
-                IStatsServer iStatsServer = ConnectToStatsServer();
+                IStatsServer iStatsServer = ConnectToStatsServer(tcpChannel);
                 List<DeviceFailureInfo> failures = iStatsServer.GetDeviceFaults(deviceId, maxResults);
-                DisconnectFromRemotingServer(this.statsServerTcpChannel);
                 return failures;
             }
             catch (Exception)
             {
                 throw new Exception("Error al obtener las Fallas del Dispositivo");
+            }
+            finally
+            {
+                DisconnectFromRemotingServer(tcpChannel);
             }
         }
 
