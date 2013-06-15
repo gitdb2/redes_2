@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.ServiceModel.Web;
+//using System.ServiceModel;
+//using System.ServiceModel.Web;
 using System.Text;
 using ort.edu.uy.obligatorio2.ClientDevicesLogic;
 using uy.edu.ort.obligatorio.Commons;
+using ort.edu.uy.obligatorio2.ClientDevicesWebService;
 
-namespace ort.edu.uy.obligatorio2.ClientDevicesWebService
+namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 {
     public class ClientDevicesServiceImpl : IClientDevicesService
     {
