@@ -43,14 +43,23 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
             {
                 if (!TextBoxIsEmpty(this.txtBoxName))
                 {
-                    this.deviceHandler.Connect(this.txtBoxName.Text.Trim());
-                    stopwatch.Reset();
-                    stopwatch.Start();
-                    ChangeStatusLabels();
-                }
-                txtBoxName.Enabled = false;
-                txtBoxName.ReadOnly = true;
+                    try
+                    {
+                        this.deviceHandler.Connect(this.txtBoxName.Text.Trim());
+                        stopwatch.Reset();
+                        stopwatch.Start();
+                        ChangeStatusLabels();
+                        txtBoxName.Enabled = false;
+                        txtBoxName.ReadOnly = true;
               
+                    }
+                    catch (Exception)
+                    {
+
+                        MessageBox.Show("Error al conectar con el servidor de comunicaciones");
+                    }
+                }
+               
             }
         }
 
