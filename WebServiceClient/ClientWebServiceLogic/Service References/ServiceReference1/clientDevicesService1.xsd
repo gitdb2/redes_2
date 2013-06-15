@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.0.242:8080/clientDevicesService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons" />
+  <xs:import schemaLocation="http://192.168.0.201:8080/clientDevicesService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons" />
   <xs:element name="Echo">
     <xs:complexType>
       <xs:sequence>

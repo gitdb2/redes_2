@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ort.edu.uy.obligatorio2.WebServiceClientLogic;
-using ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService;
+using ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1;
 
 namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
 {
@@ -19,7 +19,7 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
         private ToolStripItem itemViewStatus;
         private ToolStripItem itemViewFailures;
         private ContextMenuStrip listboxContextMenu;
-        private DeviceInfo deviceSelected;
+        private DeviceInfoWrapper deviceSelected;
 
         public Client()
         {
@@ -65,7 +65,7 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
                 this.listBoxDevices.SelectedIndex = this.listBoxDevices.IndexFromPoint(e.Location);
                 if (this.listBoxDevices.SelectedIndex != -1)
                 {
-                    this.deviceSelected = (DeviceInfo)this.listBoxDevices.SelectedItem;
+                    this.deviceSelected = (DeviceInfoWrapper)this.listBoxDevices.SelectedItem;
                     this.listboxContextMenu.Show();
                 }
             }
@@ -76,7 +76,16 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
             if (this.txtBoxClientId.Text != null && !this.txtBoxClientId.Text.Trim().Equals(""))
             {
                 this.listBoxDevices.Items.Clear();
-                this.listBoxDevices.Items.AddRange(ClientHandler.GetInstance().GetDeviceList(this.txtBoxClientId.Text.Trim()).ToArray());
+                List<DeviceInfo> devices = ClientHandler.GetInstance().GetDeviceList(this.txtBoxClientId.Text.Trim());
+                foreach (DeviceInfo item in devices)
+                {
+                    this.listBoxDevices.Items.Add(new DeviceInfoWrapper()
+                    {
+                        DeviceId = item.DeviceId,
+                        LastStatusInfo = item.LastStatusInfo,
+                        LastFailureInfo = item.LastFailureInfo
+                    });
+                }
             }
         }
 

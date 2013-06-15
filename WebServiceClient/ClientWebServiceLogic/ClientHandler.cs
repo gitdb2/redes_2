@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.Serialization;
-using ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService;
+using ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1;
 
 namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
 {

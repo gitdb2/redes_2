@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService {
+namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1 {
     using System.Runtime.Serialization;
     using System;
     
@@ -26,10 +26,10 @@ namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService {
         private string DeviceIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceFailureInfo LastFailureInfoField;
+        private ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfo LastFailureInfoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceStatusInfo LastStatusInfoField;
+        private ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfo LastStatusInfoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -55,7 +55,7 @@ namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceFailureInfo LastFailureInfo {
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfo LastFailureInfo {
             get {
                 return this.LastFailureInfoField;
             }
@@ -68,7 +68,7 @@ namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceStatusInfo LastStatusInfo {
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfo LastStatusInfo {
             get {
                 return this.LastStatusInfoField;
             }
@@ -245,29 +245,29 @@ namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ClientDevicesService.IClientDevicesService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IClientDevicesService")]
     public interface IClientDevicesService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientDevicesService/Echo", ReplyAction="http://tempuri.org/IClientDevicesService/EchoResponse")]
         string Echo(string text);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientDevicesService/GetDevicesForClient", ReplyAction="http://tempuri.org/IClientDevicesService/GetDevicesForClientResponse")]
-        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceInfo[] GetDevicesForClient(string idClient);
+        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceInfo[] GetDevicesForClient(string idClient);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientDevicesService/GetDeviceFaults", ReplyAction="http://tempuri.org/IClientDevicesService/GetDeviceFaultsResponse")]
-        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceFailureInfo[] GetDeviceFaults(string idDevice, int resultMaxSize);
+        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfo[] GetDeviceFaults(string idDevice, int resultMaxSize);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClientDevicesService/GetDeviceStatuses", ReplyAction="http://tempuri.org/IClientDevicesService/GetDeviceStatusesResponse")]
-        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceStatusInfo[] GetDeviceStatuses(string idDevice, int resultMaxSize);
+        ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfo[] GetDeviceStatuses(string idDevice, int resultMaxSize);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IClientDevicesServiceChannel : ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.IClientDevicesService, System.ServiceModel.IClientChannel {
+    public interface IClientDevicesServiceChannel : ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.IClientDevicesService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ClientDevicesServiceClient : System.ServiceModel.ClientBase<ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.IClientDevicesService>, ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.IClientDevicesService {
+    public partial class ClientDevicesServiceClient : System.ServiceModel.ClientBase<ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.IClientDevicesService>, ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.IClientDevicesService {
         
         public ClientDevicesServiceClient() {
         }
@@ -292,15 +292,15 @@ namespace ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService {
             return base.Channel.Echo(text);
         }
         
-        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceInfo[] GetDevicesForClient(string idClient) {
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceInfo[] GetDevicesForClient(string idClient) {
             return base.Channel.GetDevicesForClient(idClient);
         }
         
-        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceFailureInfo[] GetDeviceFaults(string idDevice, int resultMaxSize) {
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfo[] GetDeviceFaults(string idDevice, int resultMaxSize) {
             return base.Channel.GetDeviceFaults(idDevice, resultMaxSize);
         }
         
-        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceStatusInfo[] GetDeviceStatuses(string idDevice, int resultMaxSize) {
+        public ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceStatusInfo[] GetDeviceStatuses(string idDevice, int resultMaxSize) {
             return base.Channel.GetDeviceStatuses(idDevice, resultMaxSize);
         }
     }

@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="DeviceFailureInfo" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceFailureInfo, Service References.ClientDevicesService.Reference.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>ort.edu.uy.obligatorio2.ClientWebServiceLogic.ServiceReference1.DeviceFailureInfo, Service References.ServiceReference1.Reference.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>
