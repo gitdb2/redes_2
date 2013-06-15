@@ -39,7 +39,7 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             }
             catch (Exception) 
             { 
-                this.devicesInfo.Add(message.DeviceId, new DeviceInfo() { LastFailureInfo = newFailure });
+                this.devicesInfo.Add(message.DeviceId, new DeviceInfo() { DeviceId= message.DeviceId, LastFailureInfo = newFailure });
             }
         }
 
@@ -59,7 +59,7 @@ namespace uy.edu.ort.obligatorio2.CommunicationServer
             }
             catch (Exception)
             {
-                this.devicesInfo.Add(message.DeviceId, new DeviceInfo() { LastStatusInfo = newStatus });
+                this.devicesInfo.Add(message.DeviceId, new DeviceInfo() { DeviceId = message.DeviceId, LastStatusInfo = newStatus });
             }
         }
 

@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace uy.edu.ort.obligatorio.Commons
 {
     [Serializable]
+    [DataContract]
     public class DeviceFailureInfo
     {
-
+        [DataMember]
         public int AlarmType { get; set; }
+        [DataMember]
         public int AlarmLevel { get; set; }
+        [DataMember]
         public DateTime AlarmDateTime { get; set; }
 
         public override string ToString()

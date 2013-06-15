@@ -26,6 +26,8 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             return instance;
         }
 
+      
+
         public List<DeviceInfo> GetDevices()
         {
             ICommServer iCommServer = ConnectToCommServer();
@@ -111,6 +113,22 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             return copy;
         }
 
+
+        public List<DeviceInfo> GetUserDevices(string idUser)
+        {
+            List<DeviceInfo> ret = new List<DeviceInfo>();
+            try
+            {
+                userData.TryGetValue(idUser, out ret);
+            }
+            catch  //si no pudo obtener la lista desde el mapa
+            {
+                ret = new List<DeviceInfo>();
+            }
+
+            return ret;
+        }
+
         public void DeleteUser(string userName)
         {
             if (this.userData.ContainsKey(userName))
@@ -137,8 +155,20 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 
         public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId)
         {
-            IStatsServer iStatsServer = ConnectToStatsServer();
+           
             int maxResults = int.Parse(Settings.GetInstance().GetProperty("commserver.statuses.maxresults", "100"));
+            return GetDeviceStatusList(deviceId, maxResults);
+        }
+
+        /// <summary>
+        /// retorna las  maxresults ultimas status de un dispositivo
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="maxResults"></param>
+        /// <returns></returns>
+        public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId, int maxResults)
+        {
+            IStatsServer iStatsServer = ConnectToStatsServer();
             List<DeviceStatusInfo> statuses = iStatsServer.GetDeviceStatuses(deviceId, maxResults);
             DisconnectFromRemotingServer(this.statsServerTcpChannel);
             return statuses;
@@ -146,12 +176,23 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 
         public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId)
         {
-            IStatsServer iStatsServer = ConnectToStatsServer();
             int maxResults = int.Parse(Settings.GetInstance().GetProperty("commserver.failures.maxresults", "100"));
+            return GetDeviceFailuresList(deviceId, maxResults);
+        }
+        /// <summary>
+        /// retorna las  maxresults ultimas fallas de un dispositivo
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <param name="maxResults"></param>
+        /// <returns></returns>
+        public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId, int maxResults)
+        {
+            IStatsServer iStatsServer = ConnectToStatsServer();
             List<DeviceFailureInfo> failures = iStatsServer.GetDeviceFaults(deviceId, maxResults);
             DisconnectFromRemotingServer(this.statsServerTcpChannel);
             return failures;
         }
+
 
     }
 }
