@@ -20,17 +20,21 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
 
         public List<DeviceInfo> GetDeviceList(string clientId)
         {
+            //falta implementar
             return new List<DeviceInfo>();
         }
 
         public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId)
         {
+            //falta implementar
             return new List<DeviceFailureInfo>();
         }
 
         public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId)
         {
+            //falta implementar
             return new List<DeviceStatusInfo>();
         }
+
     }
 }
