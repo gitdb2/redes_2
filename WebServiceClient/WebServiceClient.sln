@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServiceClientGUI", "WebS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebServiceClientLogic", "ClientWebServiceLogic\WebServiceClientLogic.csproj", "{CBD9A59D-AB2C-4D78-954C-F02B34DBDF44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commons", "..\Commons\Commons\Commons.csproj", "{A4983E71-5669-45E3-A3C8-C428E056EF62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comunicacion", "..\Commons\Comunicacion\Comunicacion.csproj", "{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,16 +37,16 @@ Global
 		{CBD9A59D-AB2C-4D78-954C-F02B34DBDF44}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{CBD9A59D-AB2C-4D78-954C-F02B34DBDF44}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{CBD9A59D-AB2C-4D78-954C-F02B34DBDF44}.Release|x86.ActiveCfg = Release|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{A4983E71-5669-45E3-A3C8-C428E056EF62}.Release|x86.ActiveCfg = Release|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://192.168.0.242:8080/clientDevicesService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons" />
+  <xs:element name="Echo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="text" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EchoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EchoResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDevicesForClient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idClient" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDevicesForClientResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons" minOccurs="0" name="GetDevicesForClientResult" nillable="true" type="q1:ArrayOfDeviceInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeviceFaults">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idDevice" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resultMaxSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeviceFaultsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons" minOccurs="0" name="GetDeviceFaultsResult" nillable="true" type="q2:ArrayOfDeviceFailureInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeviceStatuses">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idDevice" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="resultMaxSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDeviceStatusesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons" minOccurs="0" name="GetDeviceStatusesResult" nillable="true" type="q3:ArrayOfDeviceStatusInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

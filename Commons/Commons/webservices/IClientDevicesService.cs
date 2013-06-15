@@ -11,8 +11,10 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesWebService
     [ServiceContract]
     public interface IClientDevicesService
     {
+
         [OperationContract]
         string Echo(string text);
+
         [OperationContract]
         List<DeviceInfo> GetDevicesForClient(string idClient);
 
@@ -21,6 +23,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesWebService
 
         [OperationContract]
         List<DeviceStatusInfo> GetDeviceStatuses(string idDevice, int resultMaxSize);
+
     }
 
 

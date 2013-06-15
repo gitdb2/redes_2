@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using uy.edu.ort.obligatorio.Commons;
+using System.Runtime.Serialization;
+using ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService;
 
 namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
 {

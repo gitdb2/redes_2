@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,12 +44,60 @@
   <ItemGroup>
     <Compile Include="ClientHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ClientDevicesService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Commons\Commons\Commons.csproj">
-      <Project>{A4983E71-5669-45E3-A3C8-C428E056EF62}</Project>
-      <Name>Commons</Name>
+    <ProjectReference Include="..\..\Commons\Comunicacion\Comunicacion.csproj">
+      <Project>{B4B3F489-2339-4AB7-ADDA-F17F6C15671D}</Project>
+      <Name>Comunicacion</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Service References\ClientDevicesService\clientDevicesService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientDevicesService\clientDevicesService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientDevicesService\clientDevicesService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ClientDevicesService\ClientDevicesServiceImpl.wsdl" />
+    <None Include="Service References\ClientDevicesService\ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceFailureInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientDevicesService\ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ClientDevicesService\ort.edu.uy.obligatorio2.ClientWebServiceLogic.ClientDevicesService.DeviceStatusInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ClientDevicesService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientDevicesService\clientDevicesService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientDevicesService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientDevicesService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ClientDevicesService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

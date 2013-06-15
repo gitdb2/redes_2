@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -89,10 +90,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Commons\Commons\Commons.csproj">
-      <Project>{A4983E71-5669-45E3-A3C8-C428E056EF62}</Project>
-      <Name>Commons</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ClientWebServiceLogic\WebServiceClientLogic.csproj">
       <Project>{CBD9A59D-AB2C-4D78-954C-F02B34DBDF44}</Project>
       <Name>WebServiceClientLogic</Name>

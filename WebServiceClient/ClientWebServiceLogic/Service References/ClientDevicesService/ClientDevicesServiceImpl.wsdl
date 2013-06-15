@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ClientDevicesServiceImpl" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://192.168.0.242:8080/clientDevicesService?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://192.168.0.242:8080/clientDevicesService?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://192.168.0.242:8080/clientDevicesService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/uy.edu.ort.obligatorio.Commons" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IClientDevicesService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="IClientDevicesService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDevicesService_GetDevicesForClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevicesForClient" />
+  </wsdl:message>
+  <wsdl:message name="IClientDevicesService_GetDevicesForClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDevicesForClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDevicesService_GetDeviceFaults_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceFaults" />
+  </wsdl:message>
+  <wsdl:message name="IClientDevicesService_GetDeviceFaults_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceFaultsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClientDevicesService_GetDeviceStatuses_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceStatuses" />
+  </wsdl:message>
+  <wsdl:message name="IClientDevicesService_GetDeviceStatuses_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDeviceStatusesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IClientDevicesService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsam:Action="http://tempuri.org/IClientDevicesService/Echo" message="tns:IClientDevicesService_Echo_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IClientDevicesService/EchoResponse" message="tns:IClientDevicesService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicesForClient">
+      <wsdl:input wsam:Action="http://tempuri.org/IClientDevicesService/GetDevicesForClient" message="tns:IClientDevicesService_GetDevicesForClient_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IClientDevicesService/GetDevicesForClientResponse" message="tns:IClientDevicesService_GetDevicesForClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceFaults">
+      <wsdl:input wsam:Action="http://tempuri.org/IClientDevicesService/GetDeviceFaults" message="tns:IClientDevicesService_GetDeviceFaults_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IClientDevicesService/GetDeviceFaultsResponse" message="tns:IClientDevicesService_GetDeviceFaults_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceStatuses">
+      <wsdl:input wsam:Action="http://tempuri.org/IClientDevicesService/GetDeviceStatuses" message="tns:IClientDevicesService_GetDeviceStatuses_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IClientDevicesService/GetDeviceStatusesResponse" message="tns:IClientDevicesService_GetDeviceStatuses_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IClientDevicesService" type="tns:IClientDevicesService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Echo">
+      <soap:operation soapAction="http://tempuri.org/IClientDevicesService/Echo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDevicesForClient">
+      <soap:operation soapAction="http://tempuri.org/IClientDevicesService/GetDevicesForClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceFaults">
+      <soap:operation soapAction="http://tempuri.org/IClientDevicesService/GetDeviceFaults" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDeviceStatuses">
+      <soap:operation soapAction="http://tempuri.org/IClientDevicesService/GetDeviceStatuses" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ClientDevicesServiceImpl">
+    <wsdl:port name="BasicHttpBinding_IClientDevicesService" binding="tns:BasicHttpBinding_IClientDevicesService">
+      <soap:address location="http://192.168.0.242:8080/clientDevicesService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
