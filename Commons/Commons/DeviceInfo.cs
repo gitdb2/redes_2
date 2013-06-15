@@ -45,7 +45,7 @@ namespace uy.edu.ort.obligatorio.Commons
         [DataMember]
         public bool Error { get; set; }
         [DataMember]
-        public DeviceInfo DeviceInfo { get; set; }
+        public List<DeviceInfo> List { get; set; }
 
 
 

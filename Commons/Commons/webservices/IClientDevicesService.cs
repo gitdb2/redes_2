@@ -16,13 +16,13 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesWebService
         string Echo(string text);
 
         [OperationContract]
-        List<DeviceInfo> GetDevicesForClient(string idClient);
+        DeviceInfoWrapper GetDevicesForClient(string idClient);
 
         [OperationContract]
-        List<DeviceFailureInfo> GetDeviceFaults(string idDevice, int resultMaxSize);
+        DeviceFailureInfoWrapper GetDeviceFaults(string idDevice, int resultMaxSize);
 
         [OperationContract]
-        List<DeviceStatusInfo> GetDeviceStatuses(string idDevice, int resultMaxSize);
+        DeviceStatusInfoWrapper GetDeviceStatuses(string idDevice, int resultMaxSize);
 
     }
 

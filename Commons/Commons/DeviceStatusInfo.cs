@@ -31,14 +31,14 @@ namespace uy.edu.ort.obligatorio.Commons
 
     [Serializable]
     [DataContract]
-    public class DeviceFailureInfoWrapper
+    public class DeviceStatusInfoWrapper
     {
         [DataMember]
         public string ErrorMessage { get; set; }
         [DataMember]
         public bool Error { get; set; }
         [DataMember]
-        public DeviceStatusInfo DeviceStatusInfo { get; set; }
+        public List<DeviceStatusInfo> List { get; set; }
     }
 
 }

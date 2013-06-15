@@ -17,22 +17,59 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public List<DeviceInfo> GetDevicesForClient(string idClient)
+        public DeviceInfoWrapper GetDevicesForClient(string idClient)
         {
+            DeviceInfoWrapper ret;
             log.InfoFormat("GetDevicesForClient({0})",idClient); 
-            return ClientHandler.GetInstance().GetUserDevices(idClient);
+            try 
+	        {	        
+		        List<DeviceInfo> tmp =  ClientHandler.GetInstance().GetUserDevices(idClient);
+                ret = new DeviceInfoWrapper(){List = tmp,  Error=false};
+	        }
+	        catch (Exception e)
+	        {
+		
+		        ret = new DeviceInfoWrapper(){List = new List<DeviceInfo>(),  Error=true,ErrorMessage= e.Message};
+	        }
+
+            return ret;
         }
 
-        public List<DeviceFailureInfo> GetDeviceFaults(string idDevice, int resultMaxSize)
+        public DeviceFailureInfoWrapper GetDeviceFaults(string idDevice, int resultMaxSize)
         {
+            DeviceFailureInfoWrapper ret;
             log.InfoFormat("GetDeviceFaults({0}, {1})", idDevice, resultMaxSize);
-            return ClientHandler.GetInstance().GetDeviceFailuresList(idDevice, resultMaxSize);
+            try
+            {
+                List<DeviceFailureInfo> tmp =  ClientHandler.GetInstance().GetDeviceFailuresList(idDevice, resultMaxSize);
+                ret = new DeviceFailureInfoWrapper() { List = tmp, Error = false };
+            }
+	        catch (Exception e)
+	        {
+                ret = new DeviceFailureInfoWrapper() { List = new List<DeviceFailureInfo>(), Error = true, ErrorMessage = e.Message };
+	        }
+
+            return ret;
         }
 
-        public List<DeviceStatusInfo> GetDeviceStatuses(string idDevice, int resultMaxSize)
+        public DeviceStatusInfoWrapper GetDeviceStatuses(string idDevice, int resultMaxSize)
         {
+            
+            DeviceStatusInfoWrapper ret;
             log.InfoFormat("GetDeviceStatuses({0}, {1})", idDevice, resultMaxSize);
-            return ClientHandler.GetInstance().GetDeviceStatusList(idDevice, resultMaxSize);
+            try
+            {
+                List<DeviceStatusInfo> tmp = ClientHandler.GetInstance().GetDeviceStatusList(idDevice, resultMaxSize);
+                ret = new DeviceStatusInfoWrapper() { List = tmp, Error = false };
+            }
+            catch (Exception e)
+            {
+                ret = new DeviceStatusInfoWrapper() { List = new List<DeviceStatusInfo>(), Error = true, ErrorMessage = e.Message };
+            }
+
+            return ret;
+
+
         }
 
         public string Echo(string text)

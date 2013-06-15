@@ -38,6 +38,6 @@ namespace uy.edu.ort.obligatorio.Commons
         [DataMember]
         public bool Error { get; set; }
         [DataMember]
-        public DeviceFailureInfo DeviceFailureInfo { get; set; }
+        public  List<DeviceFailureInfo> List { get; set; }
     }
 }
