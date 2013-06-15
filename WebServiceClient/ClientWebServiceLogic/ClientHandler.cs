@@ -21,9 +21,9 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             {
                 webServiceProvider = new ClientDevicesServiceClient();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw new Exception("Ocurrio un error al intentar conectar al WebService");
             }
         }
 
@@ -54,11 +54,18 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             try
             {
                 OpenWebServiceInterface();
-                result = this.webServiceProvider.GetDevicesForClient(clientId).Cast<DeviceInfo>().ToList();
             }
             catch (Exception ex)
             {
-                //loguear
+                throw ex;
+            }
+            try
+            {
+                result = this.webServiceProvider.GetDevicesForClient(clientId).Cast<DeviceInfo>().ToList();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocurrio un error al obtener los Dispositivos");
             }
             finally
             {
@@ -73,11 +80,18 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             try
             {
                 OpenWebServiceInterface();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            try
+            {
                 result = this.webServiceProvider.GetDeviceFaults(deviceId, 100).Cast<DeviceFailureInfo>().ToList();
             }
             catch (Exception ex)
             {
-                //loguear
+                throw new Exception("Ocurrio un error al obtener la lista de Fallas");
             }
             finally
             {
@@ -92,11 +106,18 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             try
             {
                 OpenWebServiceInterface();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            try
+            {
                 result = this.webServiceProvider.GetDeviceStatuses(deviceId, 100).Cast<DeviceStatusInfo>().ToList();
             }
             catch (Exception ex)
             {
-                //loguear
+                throw new Exception("Ocurrio un error al obtener la lista de Estados");
             }
             finally
             {

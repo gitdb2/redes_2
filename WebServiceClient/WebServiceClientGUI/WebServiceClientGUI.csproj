@@ -54,8 +54,8 @@
     <Compile Include="Client.Designer.cs">
       <DependentUpon>Client.cs</DependentUpon>
     </Compile>
-    <Compile Include="DeviceInfoFailureWrapper.cs" />
-    <Compile Include="DeviceInfoStatusWrapper.cs" />
+    <Compile Include="DeviceFailureInfoWrapper.cs" />
+    <Compile Include="DeviceStatusInfoWrapper.cs" />
     <Compile Include="DeviceInfoWrapper.cs" />
     <Compile Include="DeviceLog.cs">
       <SubType>Form</SubType>
