@@ -46,5 +46,10 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
             ClientDevicesInfo cdi = new ClientDevicesInfo();
             cdi.ShowDialog();
         }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            WebServicesServer.GetInstance().Stop();
+        }
     }
 }
