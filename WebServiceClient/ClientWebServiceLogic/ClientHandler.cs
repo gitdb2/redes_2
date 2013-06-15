@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using uy.edu.ort.obligatorio.Commons;
 
 namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
 {
@@ -15,6 +16,24 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
         public static ClientHandler GetInstance()
         {
             return instance;
+        }
+
+        public List<DeviceInfo> GetDeviceList(string clientId)
+        {
+            //falta implementar
+            return new List<DeviceInfo>();
+        }
+
+        public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId)
+        {
+            //falta implementar
+            return new List<DeviceFailureInfo>();
+        }
+
+        public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId)
+        {
+            //falta implementar
+            return new List<DeviceStatusInfo>();
         }
 
     }

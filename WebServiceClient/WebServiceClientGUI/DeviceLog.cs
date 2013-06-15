@@ -29,7 +29,6 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
             this.listBoxDeviceLog.Items.AddRange(statuses.ToArray());
         }
 
-
         public void LoadLogLines(List<DeviceFailureInfo> failures)
         {
             this.listBoxDeviceLog.Items.Clear();

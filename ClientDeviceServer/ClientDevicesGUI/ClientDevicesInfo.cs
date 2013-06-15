@@ -78,16 +78,16 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
         private void itemViewStatus_Click(object sender, EventArgs e)
         {
             DeviceLog dl = new DeviceLog();
-            dl.Text = "Estados del Dispositivo " + this.deviceSelected.LastStatusInfo.DeviceId;
-            dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceStatusList(deviceSelected.LastStatusInfo.DeviceId));
+            dl.Text = "Estados del Dispositivo " + this.deviceSelected.DeviceId;
+            dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceStatusList(deviceSelected.DeviceId));
             dl.Show();
         }
 
         private void itemViewFailures_Click(object sender, EventArgs e)
         {
             DeviceLog dl = new DeviceLog();
-            dl.Text = "Fallas del Dispositivo " + this.deviceSelected.LastStatusInfo.DeviceId;
-            dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceFailuresList(deviceSelected.LastStatusInfo.DeviceId));
+            dl.Text = "Fallas del Dispositivo " + this.deviceSelected.DeviceId;
+            dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceFailuresList(deviceSelected.DeviceId));
             dl.Show();
         }
 

@@ -20,8 +20,16 @@ namespace uy.edu.ort.obligatorio.Commons
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("Id: ").Append(LastStatusInfo.DeviceId);
-            sb.Append(", Estado: ").Append(LastStatusInfo.StatusOnOff ? "On" : "Off");
+            sb.Append("Id: ").Append(DeviceId);
+            sb.Append(", Estado: ");
+            if (LastStatusInfo != null)
+            {
+                sb.Append(LastStatusInfo.StatusOnOff ? "On" : "Off");
+            }
+            else
+            {
+                sb.Append("Sin Datos");
+            }
             return sb.ToString();
         }
 
