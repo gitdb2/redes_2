@@ -44,7 +44,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 
         private Thread service;
 
-        private  WebServicesServer()
+        private WebServicesServer()
         {
 
             Boolean autoResolveIp   = Boolean.Parse(Settings.GetInstance().GetProperty("auto.resolve.endpoint.ip", "false"));
