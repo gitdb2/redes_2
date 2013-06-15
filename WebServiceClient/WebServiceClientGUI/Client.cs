@@ -61,7 +61,7 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
             {
                 DeviceLog dl = new DeviceLog();
                 dl.Text = "Estados del Dispositivo " + this.deviceSelected.DeviceId;
-                dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceStatusList(deviceSelected.DeviceId));
+                dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceStatusList(deviceSelected.DeviceId, GetResultSize()));
                 dl.Show();
             }
             catch (Exception ex)
@@ -76,13 +76,30 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
             {
                 DeviceLog dl = new DeviceLog();
                 dl.Text = "Fallas del Dispositivo " + this.deviceSelected.DeviceId;
-                dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceFailuresList(deviceSelected.DeviceId));
+                dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceFailuresList(deviceSelected.DeviceId, GetResultSize()));
                 dl.Show();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private int GetResultSize()
+        {
+            int defaultSize = 100;
+            int size = defaultSize;
+            try 
+	        {	        
+		        size = int.Parse(this.txtMaxResults.Text);
+                if (size <= 0)
+                    size = defaultSize;
+	        }
+	        catch (Exception)
+	        {
+                size = defaultSize;
+	        }
+            return size;
         }
 
         private void btnSearchClient_Click(object sender, EventArgs e)

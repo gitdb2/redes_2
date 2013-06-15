@@ -74,7 +74,7 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             return result;
         }
 
-        public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId)
+        public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId, int maxResults)
         {
             List<DeviceFailureInfo> result = new List<DeviceFailureInfo>();
             try
@@ -87,9 +87,9 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             }
             try
             {
-                result = this.webServiceProvider.GetDeviceFaults(deviceId, 100).Cast<DeviceFailureInfo>().ToList();
+                result = this.webServiceProvider.GetDeviceFaults(deviceId, maxResults).Cast<DeviceFailureInfo>().ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Ocurrio un error al obtener la lista de Fallas");
             }
@@ -100,7 +100,7 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             return result;
         }
 
-        public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId)
+        public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId, int maxResults)
         {
             List<DeviceStatusInfo> result = new List<DeviceStatusInfo>();
             try
@@ -113,9 +113,9 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientLogic
             }
             try
             {
-                result = this.webServiceProvider.GetDeviceStatuses(deviceId, 100).Cast<DeviceStatusInfo>().ToList();
+                result = this.webServiceProvider.GetDeviceStatuses(deviceId, maxResults).Cast<DeviceStatusInfo>().ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new Exception("Ocurrio un error al obtener la lista de Estados");
             }
