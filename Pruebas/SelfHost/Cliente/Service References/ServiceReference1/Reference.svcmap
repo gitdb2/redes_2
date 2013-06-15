@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="464be24a-c360-48f6-aa78-5977b07345aa" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/hello" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="hello.xsd" MetadataType="Schema" ID="8870e968-49e2-4fbc-9698-eb2cf723e5d1" SourceId="1" SourceUrl="http://localhost:8080/hello?xsd=xsd1" />
+    <MetadataFile FileName="HelloWorldService.wsdl" MetadataType="Wsdl" ID="0422193f-b6d0-4413-84d4-1c916ca72370" SourceId="1" SourceUrl="http://localhost:8080/hello?wsdl" />
+    <MetadataFile FileName="hello.disco" MetadataType="Disco" ID="9054b1b1-de21-4db1-863b-40ab9df910f7" SourceId="1" SourceUrl="http://localhost:8080/hello?disco" />
+    <MetadataFile FileName="hello1.xsd" MetadataType="Schema" ID="e372d02a-e46c-40ed-877a-1a21915aba5d" SourceId="1" SourceUrl="http://localhost:8080/hello?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
