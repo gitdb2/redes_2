@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using ort.edu.uy.obligatorio2.MonitoringDeviceLogic;
 using uy.edu.ort.obligatorio.Commons;
 using System.Diagnostics;
+using log4net;
 
 namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
 {
@@ -16,28 +17,33 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
     {
         private MonitoringDeviceHandler deviceHandler;
         private Stopwatch stopwatch;
+        private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+        private MonitoringDeviceHandler.ErrorEventHandler errorEvent;
 
         public Device()
         {
             InitializeComponent();
+
             statusButton.Tag = true;
             deviceHandler = new MonitoringDeviceHandler();
+            errorEvent = new MonitoringDeviceHandler.ErrorEventHandler(EventErrorPopUP);
+            deviceHandler.ErrorEvent += errorEvent;
+
+
             this.stopwatch = new Stopwatch();
             ChangeStatusLabels();
             timerSendStatus.Interval = deviceHandler.GetTimerInterval();
-           
+
+            comboFailureType.SelectedIndex = 0;
+            comboFailureAlertLevel.SelectedIndex = 0;
         }
 
         private void btnConnectOnclick(object sender, EventArgs e)
         {
             if (this.deviceHandler.IsConnected)
             {
-                this.deviceHandler.Disconnect();
-                stopwatch.Stop();
-                stopwatch.Reset();
-                ChangeStatusLabels();
-                txtBoxName.Enabled = true;
-                txtBoxName.ReadOnly = false;
+                ForceDisconnect();
             }
             else
             {
@@ -45,12 +51,7 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
                 {
                     try
                     {
-                        this.deviceHandler.Connect(this.txtBoxName.Text.Trim());
-                        stopwatch.Reset();
-                        stopwatch.Start();
-                        ChangeStatusLabels();
-                        txtBoxName.Enabled = false;
-                        txtBoxName.ReadOnly = true;
+                        ForceStart();
               
                     }
                     catch (Exception)
@@ -61,6 +62,28 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
                 }
                
             }
+        }
+
+        private void ForceStart()
+        {
+            timerSendStatus.Start();
+            this.deviceHandler.Connect(this.txtBoxName.Text.Trim());
+            stopwatch.Reset();
+            stopwatch.Start();
+            ChangeStatusLabels();
+            txtBoxName.Enabled = false;
+            txtBoxName.ReadOnly = true;
+        }
+
+        private void ForceDisconnect()
+        {
+            timerSendStatus.Stop();
+            this.deviceHandler.Disconnect();
+            stopwatch.Stop();
+            stopwatch.Reset();
+            ChangeStatusLabels();
+            txtBoxName.Enabled = true;
+            txtBoxName.ReadOnly = false;
         }
 
         private string getStatusButtonState()
@@ -160,6 +183,27 @@ namespace ort.edu.uy.obligatorio2.MonitoringDeviceGUI
             ChangeStatusLabels();
             stopwatch.Reset();
             stopwatch.Start();
+        }
+
+
+
+
+        void EventErrorPopUP(object sender, SimpleEventArgs e)
+        {
+            this.BeginInvoke((Action)(delegate
+            {
+                try
+                {
+                    ForceDisconnect();
+                }
+                catch (Exception ex)
+                {
+
+                    log.Error("ForceDisconnect", ex);
+                }
+                MessageBox.Show("Se perdio la conexion con el Servidor de Comunicacion o ocurrio algun error:  " + e.Message,
+                     "Error inesperado para volver a intentar conectar cierre la apliacación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }));
         }
 
     }
