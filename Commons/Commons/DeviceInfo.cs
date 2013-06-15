@@ -34,4 +34,20 @@ namespace uy.edu.ort.obligatorio.Commons
         }
 
     }
+
+
+    [Serializable]
+    [DataContract]
+    public class DeviceInfoWrapper
+    {
+        [DataMember]
+        public string ErrorMessage { get; set; }
+        [DataMember]
+        public bool Error { get; set; }
+        [DataMember]
+        public DeviceInfo DeviceInfo { get; set; }
+
+
+
+    }
 }

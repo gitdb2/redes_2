@@ -27,6 +27,18 @@ namespace uy.edu.ort.obligatorio.Commons
             sb.Append(", ").Append("Uptime: ").Append(UpTime);
             return sb.ToString();
         }
-
     }
+
+    [Serializable]
+    [DataContract]
+    public class DeviceFailureInfoWrapper
+    {
+        [DataMember]
+        public string ErrorMessage { get; set; }
+        [DataMember]
+        public bool Error { get; set; }
+        [DataMember]
+        public DeviceStatusInfo DeviceStatusInfo { get; set; }
+    }
+
 }
