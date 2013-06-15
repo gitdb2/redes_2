@@ -12,8 +12,10 @@ namespace uy.edu.ort.obligatorio.Commons
     {
         [DataMember]
         public int AlarmType { get; set; }
+
         [DataMember]
         public int AlarmLevel { get; set; }
+
         [DataMember]
         public DateTime AlarmDateTime { get; set; }
 

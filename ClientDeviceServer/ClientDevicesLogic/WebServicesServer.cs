@@ -44,7 +44,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 
         private Thread service;
 
-        private  WebServicesServer()
+        private WebServicesServer()
         {
 
             Boolean autoResolveIp   = Boolean.Parse(Settings.GetInstance().GetProperty("auto.resolve.endpoint.ip", "false"));
@@ -59,7 +59,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             uri = "http://" + host.Trim() + ":" + port.Trim() + "/" + service.Trim();
            // uri = Settings.GetInstance().GetProperty("webservice.url", "http://localhost:8080/clientDevicesService");
         }
-
 
         public void Stop()
         {

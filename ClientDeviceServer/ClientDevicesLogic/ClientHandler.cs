@@ -13,6 +13,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 {
     public class ClientHandler
     {
+
         private static ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private static ClientHandler instance = new ClientHandler();
         private TcpChannel commServerTcpChannel;
@@ -26,14 +27,19 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             return instance;
         }
 
-
-
         public List<DeviceInfo> GetDevices()
         {
-            ICommServer iCommServer = ConnectToCommServer();
-            List<DeviceInfo> devices = iCommServer.GetDevices();
-            DisconnectFromRemotingServer(this.commServerTcpChannel);
-            return devices;
+            try
+            {
+                ICommServer iCommServer = ConnectToCommServer();
+                List<DeviceInfo> devices = iCommServer.GetDevices();
+                DisconnectFromRemotingServer(this.commServerTcpChannel);
+                return devices;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ocurrio un error al obtener los Dispositivos");
+            }
         }
 
         private IStatsServer ConnectToStatsServer()
@@ -104,7 +110,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
                     this.userData.Add(userName, userDevices);
                 }
             }
-
         }
 
         public Dictionary<string, List<DeviceInfo>> GetUsers()
@@ -119,7 +124,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             }
             return copy;
         }
-
 
         public List<DeviceInfo> GetUserDevices(string idUser)
         {
@@ -171,7 +175,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 
         public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId)
         {
-
             int maxResults = int.Parse(Settings.GetInstance().GetProperty("commserver.statuses.maxresults", "100"));
             return GetDeviceStatusList(deviceId, maxResults);
         }
@@ -184,10 +187,17 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
         /// <returns></returns>
         public List<DeviceStatusInfo> GetDeviceStatusList(string deviceId, int maxResults)
         {
-            IStatsServer iStatsServer = ConnectToStatsServer();
-            List<DeviceStatusInfo> statuses = iStatsServer.GetDeviceStatuses(deviceId, maxResults);
-            DisconnectFromRemotingServer(this.statsServerTcpChannel);
-            return statuses;
+            try
+            {
+                IStatsServer iStatsServer = ConnectToStatsServer();
+                List<DeviceStatusInfo> statuses = iStatsServer.GetDeviceStatuses(deviceId, maxResults);
+                DisconnectFromRemotingServer(this.statsServerTcpChannel);
+                return statuses;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error al obtener los Estados del Dispositivo");
+            }
         }
 
         public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId)
@@ -204,12 +214,18 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
         /// <returns></returns>
         public List<DeviceFailureInfo> GetDeviceFailuresList(string deviceId, int maxResults)
         {
-            IStatsServer iStatsServer = ConnectToStatsServer();
-            List<DeviceFailureInfo> failures = iStatsServer.GetDeviceFaults(deviceId, maxResults);
-            DisconnectFromRemotingServer(this.statsServerTcpChannel);
-            return failures;
+            try
+            {
+                IStatsServer iStatsServer = ConnectToStatsServer();
+                List<DeviceFailureInfo> failures = iStatsServer.GetDeviceFaults(deviceId, maxResults);
+                DisconnectFromRemotingServer(this.statsServerTcpChannel);
+                return failures;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error al obtener las Fallas del Dispositivo");
+            }
         }
-
 
     }
 }

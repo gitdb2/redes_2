@@ -22,8 +22,15 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
 
         private void LoadDevices()
         {
-            this.listBoxAvailable.Items.Clear();
-            this.listBoxAvailable.Items.AddRange(ClientHandler.GetInstance().GetDevices().ToArray());
+            try
+            {
+                this.listBoxAvailable.Items.Clear();
+                this.listBoxAvailable.Items.AddRange(ClientHandler.GetInstance().GetDevices().ToArray());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -82,7 +89,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Alta de Usuario", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 
             }

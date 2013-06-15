@@ -109,6 +109,7 @@
             this.txtMaxResults.PromptChar = ' ';
             this.txtMaxResults.Size = new System.Drawing.Size(95, 20);
             this.txtMaxResults.TabIndex = 7;
+            this.txtMaxResults.Text = "100";
             // 
             // Client
             // 

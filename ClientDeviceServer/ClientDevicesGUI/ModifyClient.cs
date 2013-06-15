@@ -22,19 +22,33 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
 
         private void LoadDevices()
         {
-            this.listBoxAvailable.Items.Clear();
-            this.listBoxAvailable.Items.AddRange(ClientHandler.GetInstance().GetDevices().ToArray());
+            try
+            {
+                this.listBoxAvailable.Items.Clear();
+                this.listBoxAvailable.Items.AddRange(ClientHandler.GetInstance().GetDevices().ToArray());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadUsers()
         {
-            this.comboBoxAllClients.Items.Clear();
-            this.listBoxSelected.Items.Clear();
-            this.listBoxAvailable.Items.Clear();
-            Dictionary<string, List<DeviceInfo>> users = ClientHandler.GetInstance().GetUsers();
-            foreach (KeyValuePair<string, List<DeviceInfo>> item in users)
+            try
             {
-                this.comboBoxAllClients.Items.Add(new ComboItem() { UserName = item.Key, Devices = item.Value });
+                this.comboBoxAllClients.Items.Clear();
+                this.listBoxSelected.Items.Clear();
+                this.listBoxAvailable.Items.Clear();
+                Dictionary<string, List<DeviceInfo>> users = ClientHandler.GetInstance().GetUsers();
+                foreach (KeyValuePair<string, List<DeviceInfo>> item in users)
+                {
+                    this.comboBoxAllClients.Items.Add(new ComboItem() { UserName = item.Key, Devices = item.Value });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -91,22 +105,29 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
 
         private void LoadAvailableDevices(List<DeviceInfo> userSelectedDevices)
         {
-            List<DeviceInfo> allDevices = ClientHandler.GetInstance().GetDevices();
-            foreach (DeviceInfo deviceAvailable in allDevices)
+            try
             {
-                bool add = true;
-                foreach (DeviceInfo userDevice in userSelectedDevices)
+                List<DeviceInfo> allDevices = ClientHandler.GetInstance().GetDevices();
+                foreach (DeviceInfo deviceAvailable in allDevices)
                 {
-                    if (deviceAvailable.LastStatusInfo.DeviceId.Equals(userDevice.LastStatusInfo.DeviceId))
+                    bool add = true;
+                    foreach (DeviceInfo userDevice in userSelectedDevices)
                     {
-                        add = false;
-                        break;
+                        if (deviceAvailable.LastStatusInfo.DeviceId.Equals(userDevice.LastStatusInfo.DeviceId))
+                        {
+                            add = false;
+                            break;
+                        }
+                    }
+                    if (add)
+                    {
+                        this.listBoxAvailable.Items.Add(deviceAvailable);
                     }
                 }
-                if (add)
-                {
-                    this.listBoxAvailable.Items.Add(deviceAvailable);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

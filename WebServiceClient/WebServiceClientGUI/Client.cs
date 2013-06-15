@@ -42,22 +42,6 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
             this.itemViewFailures.Click += new EventHandler(itemViewFailures_Click);
         }
 
-        private void itemViewStatus_Click(object sender, EventArgs e)
-        {
-            DeviceLog dl = new DeviceLog();
-            dl.Text = "Estados del Dispositivo " + this.deviceSelected.DeviceId;
-            dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceStatusList(deviceSelected.DeviceId));
-            dl.Show();
-        }
-
-        private void itemViewFailures_Click(object sender, EventArgs e)
-        {
-            DeviceLog dl = new DeviceLog();
-            dl.Text = "Fallas del Dispositivo " + this.deviceSelected.DeviceId;
-            dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceFailuresList(deviceSelected.DeviceId));
-            dl.Show();
-        }
-
         private void listBoxDevices_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -71,20 +55,74 @@ namespace ort.edu.uy.obligatorio2.WebServiceClientGUI
             }
         }
 
+        private void itemViewStatus_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DeviceLog dl = new DeviceLog();
+                dl.Text = "Estados del Dispositivo " + this.deviceSelected.DeviceId;
+                dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceStatusList(deviceSelected.DeviceId, GetResultSize()));
+                dl.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void itemViewFailures_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DeviceLog dl = new DeviceLog();
+                dl.Text = "Fallas del Dispositivo " + this.deviceSelected.DeviceId;
+                dl.LoadLogLines(ClientHandler.GetInstance().GetDeviceFailuresList(deviceSelected.DeviceId, GetResultSize()));
+                dl.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private int GetResultSize()
+        {
+            int defaultSize = 100;
+            int size = defaultSize;
+            try 
+	        {	        
+		        size = int.Parse(this.txtMaxResults.Text);
+                if (size <= 0)
+                    size = defaultSize;
+	        }
+	        catch (Exception)
+	        {
+                size = defaultSize;
+	        }
+            return size;
+        }
+
         private void btnSearchClient_Click(object sender, EventArgs e)
         {
             if (this.txtBoxClientId.Text != null && !this.txtBoxClientId.Text.Trim().Equals(""))
             {
-                this.listBoxDevices.Items.Clear();
-                List<DeviceInfo> devices = ClientHandler.GetInstance().GetDeviceList(this.txtBoxClientId.Text.Trim());
-                foreach (DeviceInfo item in devices)
+                try
                 {
-                    this.listBoxDevices.Items.Add(new DeviceInfoWrapper()
+                    this.listBoxDevices.Items.Clear();
+                    List<DeviceInfo> devices = ClientHandler.GetInstance().GetDeviceList(this.txtBoxClientId.Text.Trim());
+                    foreach (DeviceInfo item in devices)
                     {
-                        DeviceId = item.DeviceId,
-                        LastStatusInfo = item.LastStatusInfo,
-                        LastFailureInfo = item.LastFailureInfo
-                    });
+                        this.listBoxDevices.Items.Add(new DeviceInfoWrapper()
+                        {
+                            DeviceId = item.DeviceId,
+                            LastStatusInfo = item.LastStatusInfo,
+                            LastFailureInfo = item.LastFailureInfo
+                        });
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
