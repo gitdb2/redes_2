@@ -20,7 +20,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
 
         private void altaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -51,5 +51,6 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesGUI
         {
             WebServicesServer.GetInstance().Stop();
         }
+
     }
 }

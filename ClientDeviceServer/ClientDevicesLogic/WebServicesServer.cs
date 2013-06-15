@@ -109,6 +109,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
                     }
                   
                     host.Close();
+                    log.InfoFormat("Se cerro el webservice at {0}", baseAddress);
                 }
             }
         }
