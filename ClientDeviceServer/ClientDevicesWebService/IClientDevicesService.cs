@@ -13,7 +13,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesWebService
     public interface IClientDevicesService
     {
         [OperationContract]
-        List<string> GetDevicesForClient(string idClient);
+        List<DeviceInfo> GetDevicesForClient(string idClient);
 
         [OperationContract]
         List<DeviceFailureInfo> GetDeviceFaults(string idDevice, int resultMaxSize);
