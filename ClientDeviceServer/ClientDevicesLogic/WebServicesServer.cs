@@ -7,6 +7,7 @@ using System.ServiceModel.Description;
 using log4net;
 using Comunicacion;
 using System.Threading;
+using System.Net;
 
 namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 {
@@ -30,13 +31,33 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
 
         private Boolean stopService = false;
 
-    
+        private string GetIP()
+        {
+            var hostEntry = Dns.GetHostEntry(Dns.GetHostName());
+            var ip = (
+                       from addr in hostEntry.AddressList
+                       where addr.AddressFamily.ToString() == "InterNetwork"
+                       select addr.ToString()
+                ).FirstOrDefault();
+            return ip;
+        }
 
         private Thread service;
 
         private  WebServicesServer()
         {
-            uri = Settings.GetInstance().GetProperty("webservice.url", "http://localhost:8080/clientDevicesService");
+
+            Boolean autoResolveIp   = Boolean.Parse(Settings.GetInstance().GetProperty("auto.resolve.endpoint.ip", "false"));
+            string host             = Settings.GetInstance().GetProperty("webservice.url.host", "localhost");
+            string port             = Settings.GetInstance().GetProperty("webservice.url.port", "8080");
+            string service          = Settings.GetInstance().GetProperty("webservice.url.service", "clientDevicesService");
+
+            if(autoResolveIp)
+            {
+                host = GetIP();
+            }
+            uri = "http://" + host.Trim() + ":" + port.Trim() + "/" + service.Trim();
+           // uri = Settings.GetInstance().GetProperty("webservice.url", "http://localhost:8080/clientDevicesService");
         }
 
 
