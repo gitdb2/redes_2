@@ -179,6 +179,7 @@ namespace ort.edu.uy.obligatorio2.ClientDevicesLogic
             int maxResults = int.Parse(Settings.GetInstance().GetProperty("commserver.failures.maxresults", "100"));
             return GetDeviceFailuresList(deviceId, maxResults);
         }
+
         /// <summary>
         /// retorna las  maxresults ultimas fallas de un dispositivo
         /// </summary>
